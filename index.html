@@ -1,186 +1,904 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>EPPS | Esteban Perez Professional Services</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EPPS | Tax, Business & Digital Solutions</title>
+  <meta
+    name="description"
+    content="Esteban Perez Professional Services offers tax services, business consulting, and digital solutions with a professional, modern, and trusted approach."
+  />
   <style>
+    :root {
+      --bg: #f4f1ea;
+      --surface: #ffffff;
+      --navy: #071426;
+      --navy-2: #0d1f36;
+      --gold: #b89a63;
+      --text: #18202a;
+      --muted: #667085;
+      --line: rgba(7, 20, 38, 0.12);
+      --soft: #e8e1d3;
+      --shadow: 0 18px 50px rgba(7, 20, 38, 0.08);
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0a0a0a;
-      color: white;
+      font-family: "Inter", "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
     }
 
-    header {
-      text-align: center;
-      padding: 60px 20px 30px;
+    img {
+      max-width: 100%;
+      display: block;
     }
 
-    header img {
-      width: 90px;
-      margin-bottom: 15px;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
-    h1 {
-      margin: 0;
-      font-size: 32px;
-      letter-spacing: 1px;
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
     }
 
-    p.subtitle {
-      color: #aaa;
-      margin-top: 10px;
-    }
-
-    .services {
-      display: flex;
-      flex-wrap: wrap;
+    .btn {
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
-      gap: 20px;
-      padding: 40px 20px;
-    }
-
-    .card {
-      background-color: #111827;
-      padding: 25px;
-      border-radius: 10px;
-      width: 280px;
-      text-align: center;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      background-color: #1e293b;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      color: #3b82f6;
-    }
-
-    .card p {
-      color: #ccc;
-      font-size: 14px;
-    }
-
-    .form-section {
-      max-width: 600px;
-      margin: 60px auto;
-      padding: 40px;
-      background-color: #111827;
-      border-radius: 12px;
-    }
-
-    .form-section h2 {
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    .form-section p {
-      text-align: center;
-      color: #aaa;
-      margin-bottom: 30px;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border-radius: 6px;
-      border: none;
-      font-size: 14px;
-    }
-
-    button {
-      width: 100%;
-      padding: 14px;
-      background-color: #1e3a8a;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition: 0.25s ease;
       cursor: pointer;
     }
 
-    button:hover {
-      background-color: #2563eb;
+    .btn-primary {
+      background: var(--gold);
+      color: #111;
     }
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #666;
-      font-size: 12px;
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+    }
+
+    .btn-outline {
+      border-color: rgba(255,255,255,0.28);
+      color: #fff;
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .eyebrow {
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.05;
+      margin: 0 0 16px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      font-size: 1.02rem;
+      max-width: 700px;
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(244, 241, 234, 0.82);
+      border-bottom: 1px solid rgba(7, 20, 38, 0.08);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 82px;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #fff;
+      padding: 4px;
+      box-shadow: 0 8px 20px rgba(7,20,38,0.08);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-text strong {
+      font-size: 0.98rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-text span {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .nav {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+      font-weight: 500;
+      color: #243041;
+    }
+
+    .nav a:hover {
+      color: var(--navy);
+    }
+
+    .header-cta {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    /* Hero */
+    .hero {
+      background:
+        linear-gradient(90deg, rgba(7,20,38,0.96) 0%, rgba(7,20,38,0.90) 44%, rgba(7,20,38,0.58) 100%),
+        url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
+      color: #fff;
+    }
+
+    .hero-inner {
+      min-height: 86vh;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 48px;
+      padding: 72px 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 5.5vw, 5.4rem);
+      line-height: 0.98;
+      margin: 0 0 22px;
+      letter-spacing: -0.05em;
+      max-width: 760px;
+    }
+
+    .hero p {
+      max-width: 620px;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.82);
+      margin: 0 0 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .hero-note {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.95rem;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.18);
+    }
+
+    .hero-card h3 {
+      margin: 0 0 16px;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .hero-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .hero-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .hero-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    .hero-item span {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.94rem;
+    }
+
+    /* Section generic */
+    section {
+      padding: 92px 0;
+    }
+
+    /* Services */
+    .services-intro {
+      margin-bottom: 34px;
+    }
+
+    .service-stack {
+      display: grid;
+      gap: 26px;
+    }
+
+    .service-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      background: var(--surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(7,20,38,0.06);
+    }
+
+    .service-card.dark {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .service-content {
+      padding: 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .service-number {
+      font-size: 0.82rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .service-card h3 {
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 0 0 14px;
+    }
+
+    .service-card p {
+      margin: 0 0 22px;
+      color: inherit;
+      opacity: 0.86;
+      max-width: 560px;
+    }
+
+    .service-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 26px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .service-features li {
+      position: relative;
+      padding-left: 22px;
+      opacity: 0.92;
+    }
+
+    .service-features li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--gold);
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+
+    .service-media {
+      min-height: 420px;
+      position: relative;
+    }
+
+    .service-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .badge {
+      position: absolute;
+      right: 28px;
+      bottom: 28px;
+      background: rgba(255,255,255,0.92);
+      color: var(--navy);
+      padding: 16px 18px;
+      border-radius: 18px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      box-shadow: 0 15px 35px rgba(7,20,38,0.12);
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: stretch;
+    }
+
+    .about-panel {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow);
+    }
+
+    .about-points {
+      display: grid;
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .about-points div {
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.65);
+    }
+
+    .about-points strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .about-side {
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-side ul {
+      margin: 18px 0 0;
+      padding-left: 18px;
+      color: rgba(255,255,255,0.84);
+    }
+
+    .about-side li + li {
+      margin-top: 10px;
+    }
+
+    /* Contact */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .contact-info,
+    .contact-form {
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-info {
+      background: var(--navy);
+      color: #fff;
+      padding: 40px;
+    }
+
+    .contact-info p {
+      color: rgba(255,255,255,0.76);
+    }
+
+    .contact-info .info-block {
+      margin-top: 22px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .contact-form {
+      background: var(--surface);
+      padding: 34px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(7,20,38,0.12);
+      border-radius: 14px;
+      padding: 14px 15px;
+      font: inherit;
+      background: #fff;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(184,154,99,0.14);
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-note {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.8);
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer a:hover {
+      color: #fff;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-inner,
+      .service-card,
+      .about-grid,
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        background-position: center;
+      }
+
+      .service-media {
+        min-height: 300px;
+      }
+
+      .nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header-inner {
+        min-height: 74px;
+      }
+
+      .brand-text span {
+        display: none;
+      }
+
+      .header-cta .btn-outline {
+        display: none;
+      }
+
+      .hero-inner {
+        min-height: auto;
+        padding: 64px 0;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+
+      .service-content,
+      .about-panel,
+      .about-side,
+      .contact-info,
+      .contact-form {
+        padding: 26px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 72px 0;
+      }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <img src="logo1.png" alt="EPPS Logo">
-    <h1>Esteban Perez Professional Services</h1>
-    <p class="subtitle">Tax Services · Business Consulting · Digital Solutions</p>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand">
+        <img src="logo1.png" alt="EPPS Logo" />
+        <div class="brand-text">
+          <strong>Esteban Perez Professional Services</strong>
+          <span>Tax Services • Business Consulting • Digital Solutions</span>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#consultation">Consultation</a>
+      </nav>
+
+      <div class="header-cta">
+        <a class="btn btn-outline" href="#about">Why EPPS</a>
+        <a class="btn btn-primary" href="#consultation">Book Consultation</a>
+      </div>
+    </div>
   </header>
 
-  <!-- SERVICES -->
-  <section class="services">
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <div class="eyebrow">Professional. Strategic. Trusted.</div>
+          <h1>Strategic solutions for growth, clarity, and confidence.</h1>
+          <p>
+            EPPS provides professional tax services, business consulting, and digital solutions
+            for individuals, entrepreneurs, and growing businesses seeking practical guidance
+            and organized execution.
+          </p>
 
-    <div class="card">
-      <h3>Tax Services</h3>
-      <p>Professional tax preparation, planning, and compliance strategies to help you stay efficient and compliant.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#consultation">Book a Consultation</a>
+            <a class="btn btn-outline" href="#services">Explore Services</a>
+          </div>
+
+          <div class="hero-note">
+            Secure. Organized. Web3Forms-connected.
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3>Core Service Areas</h3>
+          <div class="hero-list">
+            <div class="hero-item">
+              <strong>Tax Services</strong>
+              <span>Professional guidance with structure, clarity, and strategic focus.</span>
+            </div>
+            <div class="hero-item">
+              <strong>Business Consulting</strong>
+              <span>Support for planning, decisions, operations, and sustainable growth.</span>
+            </div>
+            <div class="hero-item">
+              <strong>Digital Solutions</strong>
+              <span>Modern digital guidance to improve presence, systems, and efficiency.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="services-intro">
+          <div class="eyebrow">Services</div>
+          <h2 class="section-title">Three focused service lines. One trusted brand.</h2>
+          <p class="section-copy">
+            EPPS is designed to present a clear, premium, and dependable experience. Each service
+            line is structured to help clients move forward with confidence and practical next steps.
+          </p>
+        </div>
+
+        <div class="service-stack">
+          <!-- Tax -->
+          <article class="service-card">
+            <div class="service-content">
+              <div class="service-number">01 — Tax Services</div>
+              <h3>Tax services with precision and professionalism.</h3>
+              <p>
+                Clear support for tax-related matters with a practical and organized approach
+                designed to reduce confusion and improve decision-making.
+              </p>
+              <ul class="service-features">
+                <li>General tax consultation</li>
+                <li>Tax planning guidance</li>
+                <li>Review of tax situations and questions</li>
+                <li>Structured recommendations for next steps</li>
+              </ul>
+              <a class="btn btn-primary" href="#consultation">Request Tax Consultation</a>
+            </div>
+            <div class="service-media">
+              <img
+                src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1200&q=80"
+                alt="Tax services workspace"
+              />
+              <div class="badge">Trusted tax guidance</div>
+            </div>
+          </article>
+
+          <!-- Business -->
+          <article class="service-card dark">
+            <div class="service-content">
+              <div class="service-number">02 — Business Consulting</div>
+              <h3>Business consulting for structure, growth, and better decisions.</h3>
+              <p>
+                Professional consulting to support planning, problem-solving, and strategy for
+                entrepreneurs and small businesses that want organized progress.
+              </p>
+              <ul class="service-features">
+                <li>Business strategy consultation</li>
+                <li>Operational improvement ideas</li>
+                <li>Decision support and business clarity</li>
+                <li>Growth-focused recommendations</li>
+              </ul>
+              <a class="btn btn-primary" href="#consultation">Request Business Consultation</a>
+            </div>
+            <div class="service-media">
+              <img
+                src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80"
+                alt="Business consulting office"
+              />
+              <div class="badge">Strategic business support</div>
+            </div>
+          </article>
+
+          <!-- Digital -->
+          <article class="service-card">
+            <div class="service-content">
+              <div class="service-number">03 — Digital Solutions</div>
+              <h3>Digital solutions for a modern and efficient presence.</h3>
+              <p>
+                Guidance for businesses that want stronger digital positioning, better systems,
+                and a more credible client-facing experience.
+              </p>
+              <ul class="service-features">
+                <li>Website and digital presence consultation</li>
+                <li>Tools and systems recommendations</li>
+                <li>Workflow and automation ideas</li>
+                <li>Digital strategy for small businesses</li>
+              </ul>
+              <a class="btn btn-primary" href="#consultation">Request Digital Consultation</a>
+            </div>
+            <div class="service-media">
+              <img
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+                alt="Digital solutions technology"
+              />
+              <div class="badge">Modern digital direction</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="about-panel">
+          <div class="eyebrow">About EPPS</div>
+          <h2 class="section-title">A serious and organized approach to professional services.</h2>
+          <p class="section-copy">
+            Esteban Perez Professional Services is built around clarity, trust, and practical value.
+            The goal is simple: provide clients with reliable consulting that feels professional,
+            structured, and easy to understand.
+          </p>
+
+          <div class="about-points">
+            <div>
+              <strong>Professional</strong>
+              Clear communication, premium presentation, and dependable service.
+            </div>
+            <div>
+              <strong>Strategic</strong>
+              Recommendations designed to support long-term decisions, not just short-term fixes.
+            </div>
+            <div>
+              <strong>Organized</strong>
+              A minimal and structured client experience that builds confidence from the start.
+            </div>
+          </div>
+        </div>
+
+        <div class="about-side">
+          <div class="eyebrow">Why clients choose EPPS</div>
+          <h3 style="margin:0 0 10px; font-size:2rem; line-height:1.1;">Trusted guidance with a modern presentation.</h3>
+          <p>
+            EPPS combines a professional consulting image with direct and practical service lines.
+            This creates a brand that feels credible, serious, and ready to grow.
+          </p>
+          <ul>
+            <li>Elegant, minimal, and client-friendly presentation</li>
+            <li>Focused consultation for tax, business, and digital needs</li>
+            <li>Strong foundation for future growth and brand credibility</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="consultation">
+      <div class="container">
+        <div class="services-intro">
+          <div class="eyebrow">Consultation Request</div>
+          <h2 class="section-title">Book your consultation with EPPS.</h2>
+          <p class="section-copy">
+            Fill out the form below and select the service you are interested in. This form is ready
+            for Web3Forms integration so you can receive inquiries directly.
+          </p>
+        </div>
+
+        <div class="contact-wrap">
+          <div class="contact-info">
+            <h3 style="margin-top:0; font-size:1.8rem;">Simple. Professional. Direct.</h3>
+            <p>
+              Use this form for tax services, business consulting, or digital solutions.
+              A clear consultation request process helps your site feel more serious and organized.
+            </p>
+
+            <div class="info-block">
+              <strong>Available service categories</strong>
+              <p>Tax Services, Business Consulting, and Digital Solutions.</p>
+            </div>
+
+            <div class="info-block">
+              <strong>Brand image</strong>
+              <p>Minimal, trustworthy, client-focused, and professionally presented.</p>
+            </div>
+
+            <div class="info-block">
+              <strong>Integration</strong>
+              <p>Powered by Web3Forms for a simple no-backend contact workflow.</p>
+            </div>
+          </div>
+
+          <div class="contact-form">
+            <form action="https://api.web3forms.com/submit" method="POST">
+              <!-- REPLACE THIS WITH YOUR REAL WEB3FORMS ACCESS KEY -->
+              <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+              <input type="hidden" name="subject" value="New EPPS Consultation Request" />
+              <input type="hidden" name="from_name" value="EPPS Website" />
+              <input type="checkbox" name="botcheck" style="display:none;" />
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="name">Full Name</label>
+                  <input id="name" type="text" name="name" placeholder="Your full name" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input id="email" type="email" name="email" placeholder="you@example.com" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">Phone</label>
+                  <input id="phone" type="text" name="phone" placeholder="(000) 000-0000" />
+                </div>
+
+                <div class="form-group">
+                  <label for="service">Service Needed</label>
+                  <select id="service" name="service" required>
+                    <option value="">Select a service</option>
+                    <option value="Tax Services">Tax Services</option>
+                    <option value="Business Consulting">Business Consulting</option>
+                    <option value="Digital Solutions">Digital Solutions</option>
+                  </select>
+                </div>
+
+                <div class="form-group full">
+                  <label for="message">How can EPPS help you?</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Tell us briefly what you need help with..."
+                    required
+                  ></textarea>
+                </div>
+              </div>
+
+              <button class="btn btn-primary" type="submit">Submit Consultation Request</button>
+              <div class="form-note">
+                Replace <strong>YOUR_WEB3FORMS_ACCESS_KEY</strong> with your real Web3Forms key before publishing.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© 2026 Esteban Perez Professional Services. All rights reserved.</div>
+      <div>
+        <a href="#services">Services</a> ·
+        <a href="#about">About</a> ·
+        <a href="#consultation">Consultation</a>
+      </div>
     </div>
-
-    <div class="card">
-      <h3>Business Consulting</h3>
-      <p>Strategic guidance to help your business grow, optimize operations, and improve long-term performance.</p>
-    </div>
-
-    <div class="card">
-      <h3>Digital Solutions</h3>
-      <p>Modern web solutions, automation, and digital tools designed to scale your business presence.</p>
-    </div>
-
-  </section>
-
-  <!-- FORM -->
-  <section class="form-section">
-
-    <h2>Request Consultation</h2>
-    <p>We will get back to you within 24 hours</p>
-
-    <form action="https://api.web3forms.com/submit" method="POST">
-
-      <!-- ACCESS KEY -->
-      <input type="hidden" name="access_key" value="7ab326f3-0e65-4f88-9026-f2dbe07d4223">
-
-      <!-- SUBJECT -->
-      <input type="hidden" name="subject" value="New Client Request - EPPS">
-
-      <!-- REDIRECT (optional) -->
-      <!-- <input type="hidden" name="redirect" value="https://yourdomain.com/thank-you.html"> -->
-
-      <!-- ANTI-SPAM -->
-      <input type="checkbox" name="botcheck" style="display:none;">
-
-      <input type="text" name="name" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-
-      <textarea name="message" placeholder="Tell us how we can help you..." required></textarea>
-
-      <button type="submit">Submit Request</button>
-
-    </form>
-
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    © 2026 Esteban Perez Professional Services · All rights reserved
   </footer>
 
 </body>
