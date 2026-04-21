@@ -1,52 +1,187 @@
-<section style="max-width: 600px; margin: 60px auto; padding: 40px; background-color: #0f172a; border-radius: 12px; color: white; font-family: Arial, sans-serif;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EPPS | Esteban Perez Professional Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <h2 style="text-align: center; margin-bottom: 10px;">Request Consultation</h2>
-  <p style="text-align: center; color: #94a3b8; margin-bottom: 30px;">
-    Esteban Perez Professional Services (EPPS)
-  </p>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+    }
 
-  <form action="https://api.web3forms.com/submit" method="POST">
-    
-    <!-- ACCESS KEY -->
-    <input type="hidden" name="access_key" value="7ab326f3-0e65-4f88-9026-f2dbe07d4223">
+    header {
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
 
-    <!-- SUBJECT (opcional pero PRO) -->
-    <input type="hidden" name="subject" value="New Client Request - EPPS">
+    header img {
+      width: 90px;
+      margin-bottom: 15px;
+    }
 
-    <!-- NAME -->
-    <input 
-      type="text" 
-      name="name" 
-      placeholder="Full Name" 
-      required 
-      style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 6px; border: none;"
-    >
+    h1 {
+      margin: 0;
+      font-size: 32px;
+      letter-spacing: 1px;
+    }
 
-    <!-- EMAIL -->
-    <input 
-      type="email" 
-      name="email" 
-      placeholder="Email Address" 
-      required 
-      style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 6px; border: none;"
-    >
+    p.subtitle {
+      color: #aaa;
+      margin-top: 10px;
+    }
 
-    <!-- MESSAGE -->
-    <textarea 
-      name="message" 
-      placeholder="How can we help you? (Tax Services, Business Consulting, Digital Solutions)"
-      required 
-      style="width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 6px; border: none; height: 120px;"
-    ></textarea>
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px 20px;
+    }
 
-    <!-- BUTTON -->
-    <button 
-      type="submit" 
-      style="width: 100%; padding: 14px; background-color: #1e3a8a; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;"
-    >
-      Submit Request
-    </button>
+    .card {
+      background-color: #111827;
+      padding: 25px;
+      border-radius: 10px;
+      width: 280px;
+      text-align: center;
+      transition: 0.3s;
+    }
 
-  </form>
+    .card:hover {
+      transform: translateY(-5px);
+      background-color: #1e293b;
+    }
 
-</section>
+    .card h3 {
+      margin-bottom: 10px;
+      color: #3b82f6;
+    }
+
+    .card p {
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    .form-section {
+      max-width: 600px;
+      margin: 60px auto;
+      padding: 40px;
+      background-color: #111827;
+      border-radius: 12px;
+    }
+
+    .form-section h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .form-section p {
+      text-align: center;
+      color: #aaa;
+      margin-bottom: 30px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background-color: #1e3a8a;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2563eb;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #666;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <img src="logo1.png" alt="EPPS Logo">
+    <h1>Esteban Perez Professional Services</h1>
+    <p class="subtitle">Tax Services · Business Consulting · Digital Solutions</p>
+  </header>
+
+  <!-- SERVICES -->
+  <section class="services">
+
+    <div class="card">
+      <h3>Tax Services</h3>
+      <p>Professional tax preparation, planning, and compliance strategies to help you stay efficient and compliant.</p>
+    </div>
+
+    <div class="card">
+      <h3>Business Consulting</h3>
+      <p>Strategic guidance to help your business grow, optimize operations, and improve long-term performance.</p>
+    </div>
+
+    <div class="card">
+      <h3>Digital Solutions</h3>
+      <p>Modern web solutions, automation, and digital tools designed to scale your business presence.</p>
+    </div>
+
+  </section>
+
+  <!-- FORM -->
+  <section class="form-section">
+
+    <h2>Request Consultation</h2>
+    <p>We will get back to you within 24 hours</p>
+
+    <form action="https://api.web3forms.com/submit" method="POST">
+
+      <!-- ACCESS KEY -->
+      <input type="hidden" name="access_key" value="7ab326f3-0e65-4f88-9026-f2dbe07d4223">
+
+      <!-- SUBJECT -->
+      <input type="hidden" name="subject" value="New Client Request - EPPS">
+
+      <!-- REDIRECT (optional) -->
+      <!-- <input type="hidden" name="redirect" value="https://yourdomain.com/thank-you.html"> -->
+
+      <!-- ANTI-SPAM -->
+      <input type="checkbox" name="botcheck" style="display:none;">
+
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+
+      <textarea name="message" placeholder="Tell us how we can help you..." required></textarea>
+
+      <button type="submit">Submit Request</button>
+
+    </form>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 Esteban Perez Professional Services · All rights reserved
+  </footer>
+
+</body>
+</html>
