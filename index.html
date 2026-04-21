@@ -3,903 +3,1335 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EPPS | Tax, Business & Digital Solutions</title>
-  <meta
-    name="description"
-    content="Esteban Perez Professional Services offers tax services, business consulting, and digital solutions with a professional, modern, and trusted approach."
-  />
+  <title>EPPS | Esteban Perez Professional Services</title>
+  <meta name="description" content="Tax Services, Business Consulting, and Digital Solutions — Esteban Perez Professional Services." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #f4f1ea;
-      --surface: #ffffff;
-      --navy: #071426;
-      --navy-2: #0d1f36;
-      --gold: #b89a63;
-      --text: #18202a;
-      --muted: #667085;
-      --line: rgba(7, 20, 38, 0.12);
-      --soft: #e8e1d3;
-      --shadow: 0 18px 50px rgba(7, 20, 38, 0.08);
-      --radius: 22px;
-      --max: 1180px;
+      --bg:        #0a0a0b;
+      --surface:   #111114;
+      --surface-2: #18181c;
+      --border:    rgba(255,255,255,0.07);
+      --border-2:  rgba(255,255,255,0.12);
+      --gold:      #c9a84c;
+      --gold-dim:  rgba(201,168,76,0.15);
+      --gold-line: rgba(201,168,76,0.35);
+      --text:      #f0ede8;
+      --text-2:    #9a9490;
+      --text-3:    #5a5650;
+      --max:       1120px;
+      --r:         16px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
-      margin: 0;
-      font-family: "Inter", "Segoe UI", Arial, sans-serif;
-      color: var(--text);
+      font-family: 'Geist', sans-serif;
       background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .container {
-      width: min(100% - 32px, var(--max));
+    .wrap {
+      width: min(100% - 48px, var(--max));
       margin: 0 auto;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 22px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      font-weight: 600;
-      transition: 0.25s ease;
-      cursor: pointer;
+    /* ─── HEADER ─── */
+    .hdr {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(10,10,11,0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
     }
 
-    .btn-primary {
-      background: var(--gold);
-      color: #111;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.02);
-    }
-
-    .btn-outline {
-      border-color: rgba(255,255,255,0.28);
-      color: #fff;
-      background: transparent;
-    }
-
-    .btn-outline:hover {
-      background: rgba(255,255,255,0.08);
-    }
-
-    .eyebrow {
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--gold);
-      margin-bottom: 16px;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      line-height: 1.05;
-      margin: 0 0 16px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-    }
-
-    .section-copy {
-      color: var(--muted);
-      font-size: 1.02rem;
-      max-width: 700px;
-    }
-
-    /* Header */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(10px);
-      background: rgba(244, 241, 234, 0.82);
-      border-bottom: 1px solid rgba(7, 20, 38, 0.08);
-    }
-
-    .header-inner {
+    .hdr-in {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 82px;
-      gap: 20px;
+      height: 72px;
     }
 
-    .brand {
+    .logo {
       display: flex;
       align-items: center;
-      gap: 14px;
-      min-width: 0;
-    }
-
-    .brand img {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
-      border-radius: 12px;
-      background: #fff;
-      padding: 4px;
-      box-shadow: 0 8px 20px rgba(7,20,38,0.08);
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
-
-    .brand-text strong {
-      font-size: 0.98rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
-
-    .brand-text span {
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-
-    .nav {
-      display: flex;
-      gap: 26px;
-      align-items: center;
-      font-weight: 500;
-      color: #243041;
-    }
-
-    .nav a:hover {
-      color: var(--navy);
-    }
-
-    .header-cta {
-      display: flex;
       gap: 12px;
-      align-items: center;
     }
 
-    /* Hero */
+    .logo img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+    }
+
+    .logo-text strong {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+
+    .logo-text span {
+      font-size: 0.72rem;
+      color: var(--text-2);
+      font-weight: 300;
+    }
+
+    .hdr-nav {
+      display: flex;
+      gap: 36px;
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--text-2);
+    }
+
+    .hdr-nav a:hover { color: var(--text); }
+
+    .btn-book {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 20px;
+      border-radius: 8px;
+      background: var(--gold);
+      color: #0a0a0b;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-family: 'Geist', sans-serif;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .btn-book:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    /* ─── HERO ─── */
     .hero {
-      background:
-        linear-gradient(90deg, rgba(7,20,38,0.96) 0%, rgba(7,20,38,0.90) 44%, rgba(7,20,38,0.58) 100%),
-        url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
-      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 72px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-inner {
-      min-height: 86vh;
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.18;
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(10,10,11,0.98) 40%, rgba(10,10,11,0.6) 100%),
+        linear-gradient(to top, rgba(10,10,11,0.9) 0%, transparent 50%);
+    }
+
+    /* subtle grid */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-in {
+      position: relative;
+      z-index: 2;
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1fr 400px;
+      gap: 80px;
       align-items: center;
-      gap: 48px;
-      padding: 72px 0;
+      padding: 60px 0;
+    }
+
+    .hero-left { animation: fadeUp 0.8s ease both; }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--gold);
     }
 
     .hero h1 {
-      font-size: clamp(2.8rem, 5.5vw, 5.4rem);
-      line-height: 0.98;
-      margin: 0 0 22px;
-      letter-spacing: -0.05em;
-      max-width: 760px;
+      font-family: 'Cormorant', serif;
+      font-size: clamp(3.2rem, 6vw, 5.8rem);
+      font-weight: 300;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 26px;
     }
 
-    .hero p {
-      max-width: 620px;
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.82);
-      margin: 0 0 28px;
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-
-    .hero-note {
-      color: rgba(255,255,255,0.72);
-      font-size: 0.95rem;
-    }
-
-    .hero-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 24px;
-      padding: 28px;
-      box-shadow: 0 18px 50px rgba(0,0,0,0.18);
-    }
-
-    .hero-card h3 {
-      margin: 0 0 16px;
-      font-size: 1.25rem;
-      font-weight: 700;
-    }
-
-    .hero-list {
-      display: grid;
-      gap: 14px;
-    }
-
-    .hero-item {
-      padding: 16px 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .hero-item strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 1rem;
-    }
-
-    .hero-item span {
-      color: rgba(255,255,255,0.72);
+    .hero-desc {
       font-size: 0.94rem;
+      font-weight: 300;
+      color: var(--text-2);
+      max-width: 460px;
+      line-height: 1.78;
+      margin-bottom: 40px;
     }
 
-    /* Section generic */
-    section {
-      padding: 92px 0;
-    }
-
-    /* Services */
-    .services-intro {
-      margin-bottom: 34px;
-    }
-
-    .service-stack {
-      display: grid;
-      gap: 26px;
-    }
-
-    .service-card {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 36px;
-      background: var(--surface);
-      border-radius: var(--radius);
+    /* hero side card */
+    .hero-card {
+      background: rgba(17,17,20,0.85);
+      border: 1px solid var(--border-2);
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(7,20,38,0.06);
+      backdrop-filter: blur(12px);
+      animation: fadeUp 0.9s ease both;
+      animation-delay: 0.15s;
     }
 
-    .service-card.dark {
-      background: var(--navy);
-      color: #fff;
+    .hcard-top {
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--border);
     }
 
-    .service-content {
-      padding: 44px;
+    .hcard-label {
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 4px;
+    }
+
+    .hcard-title {
+      font-family: 'Cormorant', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+    }
+
+    .hcard-service {
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 28px;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .hcard-service:last-child { border-bottom: none; }
+    .hcard-service:hover { background: var(--surface-2); cursor: pointer; }
+
+    .hcs-icon {
+      width: 38px; height: 38px;
+      border-radius: 9px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
       justify-content: center;
     }
 
-    .service-number {
-      font-size: 0.82rem;
-      letter-spacing: 0.15em;
+    .hcs-icon img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+    }
+
+    .hcs-info { flex: 1; }
+
+    .hcs-name {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    .hcs-sub {
+      font-size: 0.74rem;
+      color: var(--text-3);
+      font-weight: 300;
+    }
+
+    .hcs-price {
+      font-family: 'Cormorant', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    /* ─── SERVICES ─── */
+    .services-sec {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 100px 0;
+    }
+
+    .sec-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      font-weight: 700;
       color: var(--gold);
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
-    .service-card h3 {
-      font-size: clamp(2rem, 3vw, 3rem);
+    .sec-eyebrow::after {
+      content: '';
+      width: 32px; height: 1px;
+      background: var(--gold-line);
+    }
+
+    .sec-h2 {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      font-weight: 300;
       line-height: 1.05;
-      letter-spacing: -0.03em;
-      margin: 0 0 14px;
+      letter-spacing: -0.025em;
+      margin-bottom: 12px;
     }
 
-    .service-card p {
-      margin: 0 0 22px;
-      color: inherit;
-      opacity: 0.86;
-      max-width: 560px;
+    .sec-sub {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--text-2);
+      max-width: 500px;
+      line-height: 1.75;
     }
 
-    .service-features {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 26px;
+    .services-head {
       display: grid;
-      gap: 12px;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: end;
+      margin-bottom: 56px;
     }
 
-    .service-features li {
-      position: relative;
-      padding-left: 22px;
-      opacity: 0.92;
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
     }
 
-    .service-features li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
+    .svc {
+      background: var(--surface);
+      padding: 36px 30px;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.25s;
+    }
+
+    .svc:hover { background: var(--surface-2); }
+
+    .svc-num {
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 22px;
+    }
+
+    .svc-img {
+      width: 100%;
+      height: 170px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+    }
+
+    .svc-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .svc:hover .svc-img img { transform: scale(1.04); }
+
+    .svc-name {
+      font-family: 'Cormorant', serif;
+      font-size: 1.7rem;
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .svc-desc {
+      font-size: 0.83rem;
+      font-weight: 300;
+      color: var(--text-2);
+      line-height: 1.72;
+      flex: 1;
+      margin-bottom: 22px;
+    }
+
+    .svc-features {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      margin-bottom: 26px;
+    }
+
+    .svc-features li {
+      font-size: 0.79rem;
+      color: var(--text-2);
+      font-weight: 300;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .svc-features li::before {
+      content: '';
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.65;
+      flex-shrink: 0;
+    }
+
+    .svc-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      margin-bottom: 18px;
+    }
+
+    .svc-price-amount {
+      font-family: 'Cormorant', serif;
+      font-size: 2rem;
+      font-weight: 500;
       color: var(--gold);
-      font-size: 1.15rem;
       line-height: 1;
     }
 
-    .service-media {
-      min-height: 420px;
-      position: relative;
+    .svc-price-label {
+      font-size: 0.74rem;
+      color: var(--text-3);
+      font-weight: 300;
     }
 
-    .service-media img {
+    .svc-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      padding: 11px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border-2);
+      font-size: 0.79rem;
+      font-weight: 500;
+      color: var(--text-2);
+      background: transparent;
+      cursor: pointer;
+      font-family: 'Geist', sans-serif;
+      transition: all 0.22s ease;
     }
 
-    .badge {
-      position: absolute;
-      right: 28px;
-      bottom: 28px;
-      background: rgba(255,255,255,0.92);
-      color: var(--navy);
-      padding: 16px 18px;
-      border-radius: 18px;
-      font-size: 0.92rem;
-      font-weight: 700;
-      box-shadow: 0 15px 35px rgba(7,20,38,0.12);
+    .svc-cta:hover {
+      border-color: var(--gold-line);
+      color: var(--gold);
+      background: var(--gold-dim);
     }
 
-    /* About */
+    /* ─── ABOUT ─── */
+    .about-sec {
+      background: var(--bg);
+      padding: 100px 0;
+    }
+
     .about-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 36px;
-      align-items: stretch;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
     }
 
-    .about-panel {
+    .about-l {
       background: var(--surface);
-      border-radius: var(--radius);
-      padding: 40px;
-      box-shadow: var(--shadow);
+      padding: 50px;
+    }
+
+    .about-l > p {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--text-2);
+      line-height: 1.75;
+      max-width: 440px;
+      margin-bottom: 32px;
+    }
+
+    /* about image */
+    .about-img {
+      width: 100%;
+      height: 200px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-bottom: 28px;
+    }
+
+    .about-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
     }
 
     .about-points {
       display: grid;
-      gap: 18px;
-      margin-top: 26px;
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
     }
 
-    .about-points div {
-      padding: 18px 20px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: rgba(255,255,255,0.65);
+    .ap {
+      background: var(--bg);
+      padding: 18px 22px;
+      transition: background 0.2s;
     }
 
-    .about-points strong {
+    .ap:hover { background: var(--surface-2); }
+
+    .ap strong {
       display: block;
-      margin-bottom: 6px;
+      font-size: 0.84rem;
+      font-weight: 500;
+      margin-bottom: 4px;
     }
 
-    .about-side {
-      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
-      color: #fff;
-      border-radius: var(--radius);
-      padding: 40px;
-      box-shadow: var(--shadow);
+    .ap p {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--text-2);
+    }
+
+    .about-r {
+      background: var(--surface-2);
+      padding: 50px;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
-    .about-side ul {
-      margin: 18px 0 0;
-      padding-left: 18px;
-      color: rgba(255,255,255,0.84);
+    .about-r h3 {
+      font-family: 'Cormorant', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 14px;
     }
 
-    .about-side li + li {
-      margin-top: 10px;
+    .about-r > p {
+      font-size: 0.87rem;
+      font-weight: 300;
+      color: var(--text-2);
+      line-height: 1.75;
+      margin-bottom: 28px;
     }
 
-    /* Contact */
-    .contact-wrap {
+    .about-list {
+      list-style: none;
       display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 30px;
-      align-items: start;
+      gap: 13px;
     }
 
-    .contact-info,
-    .contact-form {
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+    .about-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--text-2);
     }
 
-    .contact-info {
-      background: var(--navy);
-      color: #fff;
-      padding: 40px;
+    .about-list li::before {
+      content: '—';
+      color: var(--gold);
+      opacity: 0.7;
+      flex-shrink: 0;
+      font-size: 0.8rem;
     }
 
-    .contact-info p {
-      color: rgba(255,255,255,0.76);
-    }
-
-    .contact-info .info-block {
-      margin-top: 22px;
-      padding-top: 22px;
-      border-top: 1px solid rgba(255,255,255,0.12);
-    }
-
-    .contact-form {
+    /* global icon strip */
+    .global-strip {
+      border-top: 1px solid var(--border);
       background: var(--surface);
-      padding: 34px;
+      padding: 32px 0;
     }
 
-    .form-grid {
+    .strip-in {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .strip-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+
+    .strip-item:hover { opacity: 0.8; }
+
+    .strip-item img {
+      width: 28px; height: 28px;
+      object-fit: contain;
+      filter: grayscale(1) brightness(2);
+    }
+
+    .strip-item span {
+      font-size: 0.8rem;
+      color: var(--text-2);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+    }
+
+    /* ─── BOOKING MODAL ─── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(0,0,0,0.78);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s ease;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border-2);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 560px;
+      max-height: 92vh;
+      overflow-y: auto;
+      transform: translateY(18px) scale(0.98);
+      transition: transform 0.28s ease;
+      scrollbar-width: none;
+    }
+
+    .modal-overlay.open .modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal::-webkit-scrollbar { display: none; }
+
+    .modal-hdr {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 26px 30px 22px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--surface);
+      z-index: 10;
+    }
+
+    .modal-eyebrow {
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .modal-hdr h2 {
+      font-family: 'Cormorant', serif;
+      font-size: 1.55rem;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .modal-close {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--border-2);
+      background: transparent;
+      color: var(--text-2);
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.18s;
+      flex-shrink: 0;
+    }
+
+    .modal-close:hover {
+      color: var(--text);
+      background: var(--surface-2);
+    }
+
+    .modal-body { padding: 26px 30px 30px; }
+
+    /* service pills */
+    .modal-services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .ms-pill {
+      border: 1px solid var(--border-2);
+      border-radius: 10px;
+      padding: 14px 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: transparent;
+      color: var(--text-2);
+      font-family: 'Geist', sans-serif;
+    }
+
+    .ms-pill:hover {
+      border-color: var(--gold-line);
+      color: var(--text);
+    }
+
+    .ms-pill.active {
+      border-color: var(--gold);
+      background: var(--gold-dim);
+      color: var(--text);
+    }
+
+    .ms-pill-img {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 0 auto 8px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+    }
+
+    .ms-pill-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.8;
+    }
+
+    .ms-pill-name {
+      display: block;
+      font-size: 0.73rem;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .ms-pill-price {
+      display: block;
+      font-family: 'Cormorant', serif;
+      font-size: 1rem;
+      color: var(--gold);
+      margin-top: 4px;
+    }
+
+    .modal-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 20px 0;
+    }
+
+    /* form */
+    .f-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 12px;
     }
 
-    .form-group {
+    .f-group {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .f-group.full { grid-column: 1 / -1; }
+
+    .f-group label {
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: var(--text-2);
+      letter-spacing: 0.04em;
+    }
+
+    .f-group input,
+    .f-group select,
+    .f-group textarea {
+      width: 100%;
+      background: var(--surface-2);
+      border: 1px solid var(--border-2);
+      border-radius: 9px;
+      padding: 11px 13px;
+      font: 300 0.87rem 'Geist', sans-serif;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .f-group input::placeholder,
+    .f-group textarea::placeholder { color: var(--text-3); }
+
+    .f-group input:focus,
+    .f-group select:focus,
+    .f-group textarea:focus {
+      border-color: var(--gold-line);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.07);
+    }
+
+    .f-group select option { background: #18181c; }
+    .f-group textarea { min-height: 100px; resize: vertical; }
+
+    .order-summary {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin-bottom: 16px;
     }
 
-    .form-group.full {
-      grid-column: 1 / -1;
+    .os-label {
+      font-size: 0.74rem;
+      color: var(--text-3);
+      font-weight: 300;
     }
 
-    label {
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      border: 1px solid rgba(7,20,38,0.12);
-      border-radius: 14px;
-      padding: 14px 15px;
-      font: inherit;
-      background: #fff;
+    .os-service {
+      font-size: 0.86rem;
+      font-weight: 500;
       color: var(--text);
-      outline: none;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      margin-top: 2px;
     }
 
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 4px rgba(184,154,99,0.14);
+    .os-price {
+      font-family: 'Cormorant', serif;
+      font-size: 1.55rem;
+      font-weight: 500;
+      color: var(--gold);
     }
 
-    textarea {
-      min-height: 150px;
-      resize: vertical;
+    .modal-submit {
+      width: 100%;
+      padding: 13px;
+      border-radius: 9px;
+      background: var(--gold);
+      color: #0a0a0b;
+      border: none;
+      font: 600 0.87rem 'Geist', sans-serif;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: opacity 0.2s, transform 0.2s;
     }
 
-    .form-note {
-      font-size: 0.88rem;
-      color: var(--muted);
+    .modal-submit:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    .modal-footnote {
+      text-align: center;
+      font-size: 0.73rem;
+      color: var(--text-3);
       margin-top: 12px;
+      font-weight: 300;
     }
 
-    /* Footer */
-    .footer {
-      background: var(--navy);
-      color: rgba(255,255,255,0.8);
-      padding: 28px 0;
-      border-top: 1px solid rgba(255,255,255,0.08);
+    /* ─── FOOTER ─── */
+    .ftr {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 26px 0;
     }
 
-    .footer-inner {
+    .ftr-in {
       display: flex;
+      align-items: center;
       justify-content: space-between;
       gap: 16px;
       flex-wrap: wrap;
-      align-items: center;
     }
 
-    .footer a:hover {
-      color: #fff;
+    .ftr-copy {
+      font-size: 0.77rem;
+      color: var(--text-3);
+      font-weight: 300;
     }
 
-    /* Responsive */
+    .ftr-links {
+      display: flex;
+      gap: 24px;
+      font-size: 0.77rem;
+      color: var(--text-3);
+    }
+
+    .ftr-links a:hover { color: var(--text-2); }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 1024px) {
-      .hero-inner,
-      .service-card,
-      .about-grid,
-      .contact-wrap {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        background-position: center;
-      }
-
-      .service-media {
-        min-height: 300px;
-      }
-
-      .nav {
-        display: none;
-      }
+      .hero-in { grid-template-columns: 1fr; }
+      .hero-card { max-width: 400px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .services-head { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .hdr-nav { display: none; }
     }
 
     @media (max-width: 640px) {
-      .header-inner {
-        min-height: 74px;
-      }
-
-      .brand-text span {
-        display: none;
-      }
-
-      .header-cta .btn-outline {
-        display: none;
-      }
-
-      .hero-inner {
-        min-height: auto;
-        padding: 64px 0;
-      }
-
-      .hero h1 {
-        font-size: 2.8rem;
-      }
-
-      .service-content,
-      .about-panel,
-      .about-side,
-      .contact-info,
-      .contact-form {
-        padding: 26px;
-      }
-
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      section {
-        padding: 72px 0;
-      }
+      .wrap { width: calc(100% - 32px); }
+      section { padding: 72px 0; }
+      .hero h1 { font-size: 3rem; }
+      .modal-services { grid-template-columns: 1fr; }
+      .f-row { grid-template-columns: 1fr; }
+      .about-l, .about-r { padding: 30px 22px; }
+      .modal-hdr, .modal-body { padding-left: 20px; padding-right: 20px; }
     }
   </style>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#top" class="brand">
-        <img src="logo1.png" alt="EPPS Logo" />
-        <div class="brand-text">
+  <!-- ─── HEADER ─── -->
+  <header class="hdr">
+    <div class="wrap hdr-in">
+      <a href="#top" class="logo">
+        <img src="logo1.PNG" alt="EPPS Logo" />
+        <div class="logo-text">
           <strong>Esteban Perez Professional Services</strong>
-          <span>Tax Services • Business Consulting • Digital Solutions</span>
+          <span>Tax · Business · Digital</span>
         </div>
       </a>
-
-      <nav class="nav">
+      <nav class="hdr-nav">
         <a href="#services">Services</a>
         <a href="#about">About</a>
-        <a href="#consultation">Consultation</a>
       </nav>
-
-      <div class="header-cta">
-        <a class="btn btn-outline" href="#about">Why EPPS</a>
-        <a class="btn btn-primary" href="#consultation">Book Consultation</a>
-      </div>
+      <button class="btn-book" onclick="openModal()">Book Appointment</button>
     </div>
   </header>
 
   <main id="top">
+
+    <!-- ─── HERO ─── -->
     <section class="hero">
-      <div class="container hero-inner">
-        <div>
-          <div class="eyebrow">Professional. Strategic. Trusted.</div>
-          <h1>Strategic solutions for growth, clarity, and confidence.</h1>
-          <p>
-            EPPS provides professional tax services, business consulting, and digital solutions
-            for individuals, entrepreneurs, and growing businesses seeking practical guidance
-            and organized execution.
+      <div class="hero-bg">
+        <img src="lobby1.png" alt="" />
+      </div>
+
+      <div class="wrap hero-in">
+        <div class="hero-left">
+          <div class="hero-tag">Professional Services</div>
+          <h1>Strategic<br>clarity for<br><em>your goals.</em></h1>
+          <p class="hero-desc">
+            Tax services, business consulting, and digital solutions —
+            built for entrepreneurs and individuals who demand
+            organized, professional support.
           </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#consultation">Book a Consultation</a>
-            <a class="btn btn-outline" href="#services">Explore Services</a>
-          </div>
-
-          <div class="hero-note">
-            Secure. Organized. Web3Forms-connected.
-          </div>
+          <button class="btn-book" onclick="openModal()" style="font-size:0.9rem; padding:13px 28px; border-radius:10px;">
+            Book an Appointment
+          </button>
         </div>
 
         <div class="hero-card">
-          <h3>Core Service Areas</h3>
-          <div class="hero-list">
-            <div class="hero-item">
-              <strong>Tax Services</strong>
-              <span>Professional guidance with structure, clarity, and strategic focus.</span>
+          <div class="hcard-top">
+            <div class="hcard-label">Consultation Pricing</div>
+            <div class="hcard-title">What we offer</div>
+          </div>
+          <div class="hcard-service" onclick="openModal('Tax Services')">
+            <div class="hcs-icon">
+              <img src="Calculator1.png" alt="Tax" />
             </div>
-            <div class="hero-item">
-              <strong>Business Consulting</strong>
-              <span>Support for planning, decisions, operations, and sustainable growth.</span>
+            <div class="hcs-info">
+              <div class="hcs-name">Tax Services</div>
+              <div class="hcs-sub">Planning & compliance</div>
             </div>
-            <div class="hero-item">
-              <strong>Digital Solutions</strong>
-              <span>Modern digital guidance to improve presence, systems, and efficiency.</span>
+            <span class="hcs-price">$44.99</span>
+          </div>
+          <div class="hcard-service" onclick="openModal('Business Consulting')">
+            <div class="hcs-icon">
+              <img src="globalicon1.png" alt="Business" />
             </div>
+            <div class="hcs-info">
+              <div class="hcs-name">Business Consulting</div>
+              <div class="hcs-sub">Strategy & growth</div>
+            </div>
+            <span class="hcs-price">$44.99</span>
+          </div>
+          <div class="hcard-service" onclick="openModal('Digital Solutions')">
+            <div class="hcs-icon">
+              <img src="iconweb1.png" alt="Digital" />
+            </div>
+            <div class="hcs-info">
+              <div class="hcs-name">Digital Solutions</div>
+              <div class="hcs-sub">Web presence & automation</div>
+            </div>
+            <span class="hcs-price">$44.99</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="services">
-      <div class="container">
-        <div class="services-intro">
-          <div class="eyebrow">Services</div>
-          <h2 class="section-title">Three focused service lines. One trusted brand.</h2>
-          <p class="section-copy">
-            EPPS is designed to present a clear, premium, and dependable experience. Each service
-            line is structured to help clients move forward with confidence and practical next steps.
+    <!-- ─── SERVICES ─── -->
+    <section id="services" class="services-sec">
+      <div class="wrap">
+        <div class="services-head">
+          <div>
+            <div class="sec-eyebrow">Services</div>
+            <h2 class="sec-h2">Three service lines.<br>One trusted team.</h2>
+          </div>
+          <p class="sec-sub">
+            Each service is structured to deliver clear, professional consultation
+            with practical outcomes and zero confusion.
           </p>
         </div>
 
-        <div class="service-stack">
+        <div class="services-grid">
+
           <!-- Tax -->
-          <article class="service-card">
-            <div class="service-content">
-              <div class="service-number">01 — Tax Services</div>
-              <h3>Tax services with precision and professionalism.</h3>
-              <p>
-                Clear support for tax-related matters with a practical and organized approach
-                designed to reduce confusion and improve decision-making.
-              </p>
-              <ul class="service-features">
-                <li>General tax consultation</li>
-                <li>Tax planning guidance</li>
-                <li>Review of tax situations and questions</li>
-                <li>Structured recommendations for next steps</li>
-              </ul>
-              <a class="btn btn-primary" href="#consultation">Request Tax Consultation</a>
+          <div class="svc">
+            <div class="svc-num">01 — TAX SERVICES</div>
+            <div class="svc-img">
+              <img src="city1.png" alt="Tax Services" />
             </div>
-            <div class="service-media">
-              <img
-                src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1200&q=80"
-                alt="Tax services workspace"
-              />
-              <div class="badge">Trusted tax guidance</div>
+            <div class="svc-name">Tax Services</div>
+            <p class="svc-desc">Professional tax preparation, planning, and compliance strategies to keep you organized and ahead.</p>
+            <ul class="svc-features">
+              <li>General tax consultation</li>
+              <li>Tax planning guidance</li>
+              <li>Review of tax situations</li>
+              <li>Structured next-step recommendations</li>
+            </ul>
+            <div class="svc-price-row">
+              <span class="svc-price-amount">$44.99</span>
+              <span class="svc-price-label">/ consultation</span>
             </div>
-          </article>
+            <button class="svc-cta" onclick="openModal('Tax Services')">Book Tax Consultation →</button>
+          </div>
 
           <!-- Business -->
-          <article class="service-card dark">
-            <div class="service-content">
-              <div class="service-number">02 — Business Consulting</div>
-              <h3>Business consulting for structure, growth, and better decisions.</h3>
-              <p>
-                Professional consulting to support planning, problem-solving, and strategy for
-                entrepreneurs and small businesses that want organized progress.
-              </p>
-              <ul class="service-features">
-                <li>Business strategy consultation</li>
-                <li>Operational improvement ideas</li>
-                <li>Decision support and business clarity</li>
-                <li>Growth-focused recommendations</li>
-              </ul>
-              <a class="btn btn-primary" href="#consultation">Request Business Consultation</a>
+          <div class="svc">
+            <div class="svc-num">02 — BUSINESS CONSULTING</div>
+            <div class="svc-img">
+              <img src="background1.png" alt="Business Consulting" />
             </div>
-            <div class="service-media">
-              <img
-                src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80"
-                alt="Business consulting office"
-              />
-              <div class="badge">Strategic business support</div>
+            <div class="svc-name">Business Consulting</div>
+            <p class="svc-desc">Strategic guidance to help your business grow, optimize operations, and make better long-term decisions.</p>
+            <ul class="svc-features">
+              <li>Business strategy consultation</li>
+              <li>Operational improvement</li>
+              <li>Decision support & clarity</li>
+              <li>Growth-focused recommendations</li>
+            </ul>
+            <div class="svc-price-row">
+              <span class="svc-price-amount">$44.99</span>
+              <span class="svc-price-label">/ consultation</span>
             </div>
-          </article>
+            <button class="svc-cta" onclick="openModal('Business Consulting')">Book Business Consultation →</button>
+          </div>
 
           <!-- Digital -->
-          <article class="service-card">
-            <div class="service-content">
-              <div class="service-number">03 — Digital Solutions</div>
-              <h3>Digital solutions for a modern and efficient presence.</h3>
-              <p>
-                Guidance for businesses that want stronger digital positioning, better systems,
-                and a more credible client-facing experience.
-              </p>
-              <ul class="service-features">
-                <li>Website and digital presence consultation</li>
-                <li>Tools and systems recommendations</li>
-                <li>Workflow and automation ideas</li>
-                <li>Digital strategy for small businesses</li>
-              </ul>
-              <a class="btn btn-primary" href="#consultation">Request Digital Consultation</a>
+          <div class="svc">
+            <div class="svc-num">03 — DIGITAL SOLUTIONS</div>
+            <div class="svc-img">
+              <img src="Servers1.png" alt="Digital Solutions" />
             </div>
-            <div class="service-media">
-              <img
-                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
-                alt="Digital solutions technology"
-              />
-              <div class="badge">Modern digital direction</div>
+            <div class="svc-name">Digital Solutions</div>
+            <p class="svc-desc">Modern web and digital tools designed to strengthen your presence, streamline workflows, and scale your brand.</p>
+            <ul class="svc-features">
+              <li>Website & presence consultation</li>
+              <li>Tools & systems recommendations</li>
+              <li>Workflow & automation ideas</li>
+              <li>Digital strategy for small businesses</li>
+            </ul>
+            <div class="svc-price-row">
+              <span class="svc-price-amount">$44.99</span>
+              <span class="svc-price-label">/ consultation</span>
             </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="container about-grid">
-        <div class="about-panel">
-          <div class="eyebrow">About EPPS</div>
-          <h2 class="section-title">A serious and organized approach to professional services.</h2>
-          <p class="section-copy">
-            Esteban Perez Professional Services is built around clarity, trust, and practical value.
-            The goal is simple: provide clients with reliable consulting that feels professional,
-            structured, and easy to understand.
-          </p>
-
-          <div class="about-points">
-            <div>
-              <strong>Professional</strong>
-              Clear communication, premium presentation, and dependable service.
-            </div>
-            <div>
-              <strong>Strategic</strong>
-              Recommendations designed to support long-term decisions, not just short-term fixes.
-            </div>
-            <div>
-              <strong>Organized</strong>
-              A minimal and structured client experience that builds confidence from the start.
-            </div>
+            <button class="svc-cta" onclick="openModal('Digital Solutions')">Book Digital Consultation →</button>
           </div>
-        </div>
 
-        <div class="about-side">
-          <div class="eyebrow">Why clients choose EPPS</div>
-          <h3 style="margin:0 0 10px; font-size:2rem; line-height:1.1;">Trusted guidance with a modern presentation.</h3>
-          <p>
-            EPPS combines a professional consulting image with direct and practical service lines.
-            This creates a brand that feels credible, serious, and ready to grow.
-          </p>
-          <ul>
-            <li>Elegant, minimal, and client-friendly presentation</li>
-            <li>Focused consultation for tax, business, and digital needs</li>
-            <li>Strong foundation for future growth and brand credibility</li>
-          </ul>
         </div>
       </div>
     </section>
 
-    <section id="consultation">
-      <div class="container">
-        <div class="services-intro">
-          <div class="eyebrow">Consultation Request</div>
-          <h2 class="section-title">Book your consultation with EPPS.</h2>
-          <p class="section-copy">
-            Fill out the form below and select the service you are interested in. This form is ready
-            for Web3Forms integration so you can receive inquiries directly.
-          </p>
+    <!-- ─── ICON STRIP ─── -->
+    <div class="global-strip">
+      <div class="wrap strip-in">
+        <div class="strip-item">
+          <img src="globalicon1.png" alt="" />
+          <span>Global Strategy</span>
         </div>
+        <div class="strip-item">
+          <img src="iconpage1.png" alt="" />
+          <span>Document Services</span>
+        </div>
+        <div class="strip-item">
+          <img src="iconuser1.png" alt="" />
+          <span>Client Focused</span>
+        </div>
+        <div class="strip-item">
+          <img src="iconweb1.png" alt="" />
+          <span>Digital Solutions</span>
+        </div>
+        <div class="strip-item">
+          <img src="Calculator1.png" alt="" />
+          <span>Tax Expertise</span>
+        </div>
+      </div>
+    </div>
 
-        <div class="contact-wrap">
-          <div class="contact-info">
-            <h3 style="margin-top:0; font-size:1.8rem;">Simple. Professional. Direct.</h3>
+    <!-- ─── ABOUT ─── -->
+    <section id="about" class="about-sec">
+      <div class="wrap">
+        <div class="about-grid">
+          <div class="about-l">
+            <div class="sec-eyebrow">About EPPS</div>
+            <h2 class="sec-h2" style="margin-bottom:14px;">A serious approach to professional services.</h2>
             <p>
-              Use this form for tax services, business consulting, or digital solutions.
-              A clear consultation request process helps your site feel more serious and organized.
+              EPPS is built around one idea: deliver reliable, professional consulting
+              that is easy to understand and simple to act on.
             </p>
-
-            <div class="info-block">
-              <strong>Available service categories</strong>
-              <p>Tax Services, Business Consulting, and Digital Solutions.</p>
+            <div class="about-img">
+              <img src="Here1.png" alt="About EPPS" />
             </div>
-
-            <div class="info-block">
-              <strong>Brand image</strong>
-              <p>Minimal, trustworthy, client-focused, and professionally presented.</p>
-            </div>
-
-            <div class="info-block">
-              <strong>Integration</strong>
-              <p>Powered by Web3Forms for a simple no-backend contact workflow.</p>
+            <div class="about-points">
+              <div class="ap">
+                <strong>Professional</strong>
+                <p>Clear communication, premium presentation, dependable execution.</p>
+              </div>
+              <div class="ap">
+                <strong>Strategic</strong>
+                <p>Recommendations built for long-term impact, not short-term fixes.</p>
+              </div>
+              <div class="ap">
+                <strong>Organized</strong>
+                <p>A structured client experience that builds confidence from day one.</p>
+              </div>
             </div>
           </div>
-
-          <div class="contact-form">
-            <form action="https://api.web3forms.com/submit" method="POST">
-              <!-- REPLACE THIS WITH YOUR REAL WEB3FORMS ACCESS KEY -->
-              <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
-              <input type="hidden" name="subject" value="New EPPS Consultation Request" />
-              <input type="hidden" name="from_name" value="EPPS Website" />
-              <input type="checkbox" name="botcheck" style="display:none;" />
-
-              <div class="form-grid">
-                <div class="form-group">
-                  <label for="name">Full Name</label>
-                  <input id="name" type="text" name="name" placeholder="Your full name" required />
-                </div>
-
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input id="email" type="email" name="email" placeholder="you@example.com" required />
-                </div>
-
-                <div class="form-group">
-                  <label for="phone">Phone</label>
-                  <input id="phone" type="text" name="phone" placeholder="(000) 000-0000" />
-                </div>
-
-                <div class="form-group">
-                  <label for="service">Service Needed</label>
-                  <select id="service" name="service" required>
-                    <option value="">Select a service</option>
-                    <option value="Tax Services">Tax Services</option>
-                    <option value="Business Consulting">Business Consulting</option>
-                    <option value="Digital Solutions">Digital Solutions</option>
-                  </select>
-                </div>
-
-                <div class="form-group full">
-                  <label for="message">How can EPPS help you?</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    placeholder="Tell us briefly what you need help with..."
-                    required
-                  ></textarea>
-                </div>
-              </div>
-
-              <button class="btn btn-primary" type="submit">Submit Consultation Request</button>
-              <div class="form-note">
-                Replace <strong>YOUR_WEB3FORMS_ACCESS_KEY</strong> with your real Web3Forms key before publishing.
-              </div>
-            </form>
+          <div class="about-r">
+            <div class="sec-eyebrow" style="margin-bottom:16px;">Why EPPS</div>
+            <h3>Trusted guidance.<br>Modern execution.</h3>
+            <p>
+              EPPS combines a credible professional image with direct, practical service —
+              creating a brand clients rely on to move forward with clarity and confidence.
+            </p>
+            <ul class="about-list">
+              <li>Clean, focused consultation experience</li>
+              <li>Tax, business, and digital expertise in one place</li>
+              <li>Flat-rate pricing — no surprises, no hidden fees</li>
+              <li>Built for entrepreneurs and growing businesses</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
+
   </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>© 2026 Esteban Perez Professional Services. All rights reserved.</div>
-      <div>
-        <a href="#services">Services</a> ·
-        <a href="#about">About</a> ·
-        <a href="#consultation">Consultation</a>
+  <!-- ─── FOOTER ─── -->
+  <footer class="ftr">
+    <div class="wrap ftr-in">
+      <span class="ftr-copy">© 2026 Esteban Perez Professional Services. All rights reserved.</span>
+      <div class="ftr-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#" onclick="openModal(); return false;">Book</a>
       </div>
     </div>
   </footer>
+
+  <!-- ─── BOOKING MODAL ─── -->
+  <div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+    <div class="modal" id="modal">
+
+      <div class="modal-hdr">
+        <div>
+          <div class="modal-eyebrow">EPPS Consultation</div>
+          <h2>Book an Appointment</h2>
+        </div>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+
+      <div class="modal-body">
+
+        <p style="font-size:0.74rem; font-weight:500; color:var(--text-2); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:10px;">Select a Service</p>
+
+        <div class="modal-services">
+          <div class="ms-pill" data-service="Tax Services" onclick="selectService(this)">
+            <div class="ms-pill-img"><img src="Calculator1.png" alt="Tax" /></div>
+            <span class="ms-pill-name">Tax Services</span>
+            <span class="ms-pill-price">$44.99</span>
+          </div>
+          <div class="ms-pill" data-service="Business Consulting" onclick="selectService(this)">
+            <div class="ms-pill-img"><img src="globalicon1.png" alt="Business" /></div>
+            <span class="ms-pill-name">Business Consulting</span>
+            <span class="ms-pill-price">$44.99</span>
+          </div>
+          <div class="ms-pill" data-service="Digital Solutions" onclick="selectService(this)">
+            <div class="ms-pill-img"><img src="iconweb1.png" alt="Digital" /></div>
+            <span class="ms-pill-name">Digital Solutions</span>
+            <span class="ms-pill-price">$44.99</span>
+          </div>
+        </div>
+
+        <div class="modal-divider"></div>
+
+        <form action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="7ab326f3-0e65-4f88-9026-f2dbe07d4223" />
+          <input type="hidden" name="subject" value="New EPPS Consultation Booking" />
+          <input type="hidden" name="from_name" value="EPPS Website" />
+          <input type="checkbox" name="botcheck" style="display:none;" />
+          <input type="hidden" name="service" id="hiddenService" value="" />
+
+          <div class="f-row">
+            <div class="f-group">
+              <label>Full Name *</label>
+              <input type="text" name="name" placeholder="Your full name" required />
+            </div>
+            <div class="f-group">
+              <label>Email Address *</label>
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </div>
+            <div class="f-group">
+              <label>Phone Number</label>
+              <input type="text" name="phone" placeholder="(000) 000-0000" />
+            </div>
+            <div class="f-group">
+              <label>Best Time to Reach You</label>
+              <select name="preferred_time">
+                <option value="" disabled selected>Preferred time</option>
+                <option>Morning (9am – 12pm)</option>
+                <option>Afternoon (12pm – 5pm)</option>
+                <option>Evening (5pm – 8pm)</option>
+              </select>
+            </div>
+            <div class="f-group full">
+              <label>How can EPPS help you? *</label>
+              <textarea name="message" placeholder="Brief description of what you need help with..." required></textarea>
+            </div>
+          </div>
+
+          <div class="modal-divider"></div>
+
+          <div class="order-summary">
+            <div>
+              <div class="os-label">Selected Service</div>
+              <div class="os-service" id="summaryService">— Select a service above —</div>
+            </div>
+            <div class="os-price" id="summaryPrice">—</div>
+          </div>
+
+          <button type="submit" class="modal-submit">Confirm Booking Request</button>
+          <p class="modal-footnote">We'll confirm within 24 hours · Payment collected at session</p>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(service) {
+      document.getElementById('modalOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      if (service) {
+        const pill = document.querySelector(`.ms-pill[data-service="${service}"]`);
+        if (pill) selectService(pill);
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function handleOverlayClick(e) {
+      if (e.target === document.getElementById('modalOverlay')) closeModal();
+    }
+
+    function selectService(el) {
+      document.querySelectorAll('.ms-pill').forEach(p => p.classList.remove('active'));
+      el.classList.add('active');
+      const svc = el.dataset.service;
+      document.getElementById('hiddenService').value = svc + ' — $44.99';
+      document.getElementById('summaryService').textContent = svc;
+      document.getElementById('summaryPrice').textContent = '$44.99';
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
 
 </body>
 </html>
