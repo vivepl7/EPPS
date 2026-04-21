@@ -1,250 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>EPPS | Esteban Perez Professional Services</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<section style="max-width: 600px; margin: 60px auto; padding: 40px; background-color: #0f172a; border-radius: 12px; color: white; font-family: Arial, sans-serif;">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+  <h2 style="text-align: center; margin-bottom: 10px;">Request Consultation</h2>
+  <p style="text-align: center; color: #94a3b8; margin-bottom: 30px;">
+    Esteban Perez Professional Services (EPPS)
+  </p>
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #0a0a0a, #111827);
-      color: white;
-    }
+  <form action="https://api.web3forms.com/submit" method="POST">
+    
+    <!-- ACCESS KEY -->
+    <input type="hidden" name="access_key" value="7ab326f3-0e65-4f88-9026-f2dbe07d4223">
 
-    header {
-      text-align: center;
-      padding: 70px 20px 40px;
-    }
+    <!-- SUBJECT (opcional pero PRO) -->
+    <input type="hidden" name="subject" value="New Client Request - EPPS">
 
-    header img {
-      width: 95px;
-      margin-bottom: 18px;
-    }
+    <!-- NAME -->
+    <input 
+      type="text" 
+      name="name" 
+      placeholder="Full Name" 
+      required 
+      style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 6px; border: none;"
+    >
 
-    h1 {
-      margin: 0;
-      font-size: 34px;
-      letter-spacing: 1px;
-    }
+    <!-- EMAIL -->
+    <input 
+      type="email" 
+      name="email" 
+      placeholder="Email Address" 
+      required 
+      style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 6px; border: none;"
+    >
 
-    p.subtitle {
-      color: #9ca3af;
-      margin-top: 12px;
-      font-size: 15px;
-    }
+    <!-- MESSAGE -->
+    <textarea 
+      name="message" 
+      placeholder="How can we help you? (Tax Services, Business Consulting, Digital Solutions)"
+      required 
+      style="width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 6px; border: none; height: 120px;"
+    ></textarea>
 
-    .services {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 24px;
-      padding: 30px 20px 50px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+    <!-- BUTTON -->
+    <button 
+      type="submit" 
+      style="width: 100%; padding: 14px; background-color: #1e3a8a; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;"
+    >
+      Submit Request
+    </button>
 
-    .card {
-      background-color: #111827;
-      padding: 30px 24px;
-      border-radius: 14px;
-      width: 300px;
-      text-align: center;
-      transition: 0.3s ease;
-      border: 1px solid #1f2937;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-    }
+  </form>
 
-    .card:hover {
-      transform: translateY(-6px);
-      background-color: #172033;
-      border-color: #2563eb;
-    }
-
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 12px;
-      color: #60a5fa;
-      font-size: 22px;
-    }
-
-    .price {
-      font-size: 30px;
-      font-weight: bold;
-      margin: 12px 0 6px;
-      color: #22c55e;
-    }
-
-    .fee-label {
-      color: #d1d5db;
-      font-size: 13px;
-      margin-bottom: 16px;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-    }
-
-    .card p {
-      color: #cbd5e1;
-      font-size: 14px;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .form-section {
-      max-width: 700px;
-      margin: 20px auto 70px;
-      padding: 40px 28px;
-      background-color: #111827;
-      border-radius: 16px;
-      border: 1px solid #1f2937;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-    }
-
-    .form-section h2 {
-      text-align: center;
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 28px;
-    }
-
-    .form-section p {
-      text-align: center;
-      color: #9ca3af;
-      margin-bottom: 28px;
-      font-size: 14px;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 16px;
-      border-radius: 8px;
-      border: 1px solid #374151;
-      background-color: #0f172a;
-      color: white;
-      font-size: 14px;
-      outline: none;
-    }
-
-    input::placeholder,
-    textarea::placeholder {
-      color: #94a3b8;
-    }
-
-    input:focus,
-    textarea:focus {
-      border-color: #3b82f6;
-    }
-
-    textarea {
-      min-height: 130px;
-      resize: vertical;
-    }
-
-    button {
-      width: 100%;
-      padding: 15px;
-      background: linear-gradient(to right, #1e3a8a, #2563eb);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 15px;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
-
-    button:hover {
-      opacity: 0.95;
-      transform: translateY(-1px);
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 20px 40px;
-      color: #6b7280;
-      font-size: 12px;
-    }
-
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 28px;
-      }
-
-      .card {
-        width: 100%;
-        max-width: 340px;
-      }
-
-      .form-section {
-        margin: 10px 20px 60px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- HEADER -->
-  <header>
-    <img src="logo1.png" alt="EPPS Logo">
-    <h1>Esteban Perez Professional Services</h1>
-    <p class="subtitle">Tax Services · Business Consulting · Digital Solutions</p>
-  </header>
-
-  <!-- SERVICES -->
-  <section class="services">
-
-    <div class="card">
-      <h3>Tax Services</h3>
-      <div class="price">$44.99</div>
-      <div class="fee-label">Consultation Fee</div>
-      <p>Professional guidance for tax questions, planning, and service recommendations tailored to your situation.</p>
-    </div>
-
-    <div class="card">
-      <h3>Business Consulting</h3>
-      <div class="price">$44.99</div>
-      <div class="fee-label">Consultation Fee</div>
-      <p>Strategic support for small businesses seeking clarity, structure, and practical direction for growth.</p>
-    </div>
-
-    <div class="card">
-      <h3>Digital Solutions</h3>
-      <div class="price">$44.99</div>
-      <div class="fee-label">Consultation Fee</div>
-      <p>Modern digital consulting for websites, workflows, automation ideas, and online business presence.</p>
-    </div>
-
-  </section>
-
-  <!-- FORM -->
-  <section class="form-section">
-    <h2>Request Consultation</h2>
-    <p>$44.99 per consultation · We will contact you within 24 hours</p>
-
-    <form action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="7ab326f3-0e65-4f88-9026-f2dbe07d4223">
-      <input type="hidden" name="subject" value="New Client Request - EPPS">
-      <input type="checkbox" name="botcheck" style="display:none;">
-
-      <input type="text" name="name" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <textarea name="message" placeholder="Tell us which service you are interested in and how we can help." required></textarea>
-
-      <button type="submit">Request Consultation</button>
-    </form>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    © 2026 Esteban Perez Professional Services · All rights reserved
-  </footer>
-
-</body>
-</html>
+</section>
