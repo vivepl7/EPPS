@@ -44,7 +44,7 @@
       margin: 0 auto;
     }
 
-    /* ─── HEADER ─── */
+    /* HEADER */
     .hdr {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -115,7 +115,7 @@
 
     .btn-book:hover { opacity: 0.85; transform: translateY(-1px); }
 
-    /* ─── HERO ─── */
+    /* HERO */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -142,11 +142,10 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to right, rgba(10,10,11,0.98) 40%, rgba(10,10,11,0.6) 100%),
+        linear-gradient(to right, rgba(10,10,11,0.98) 35%, rgba(10,10,11,0.62) 100%),
         linear-gradient(to top, rgba(10,10,11,0.9) 0%, transparent 50%);
     }
 
-    /* subtle grid */
     .hero::before {
       content: '';
       position: absolute;
@@ -163,13 +162,16 @@
       position: relative;
       z-index: 2;
       display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 80px;
+      grid-template-columns: 1fr;
+      gap: 60px;
       align-items: center;
-      padding: 60px 0;
+      padding: 80px 0;
     }
 
-    .hero-left { animation: fadeUp 0.8s ease both; }
+    .hero-left {
+      max-width: 720px;
+      animation: fadeUp 0.8s ease both;
+    }
 
     .hero-tag {
       display: inline-flex;
@@ -204,98 +206,58 @@
     }
 
     .hero-desc {
-      font-size: 0.94rem;
+      font-size: 0.96rem;
       font-weight: 300;
       color: var(--text-2);
-      max-width: 460px;
+      max-width: 520px;
       line-height: 1.78;
-      margin-bottom: 40px;
+      margin-bottom: 26px;
     }
 
-    /* hero side card */
-    .hero-card {
-      background: rgba(17,17,20,0.85);
+    .hero-offer {
+      margin-bottom: 34px;
+      padding: 18px 22px;
       border: 1px solid var(--border-2);
-      border-radius: 20px;
-      overflow: hidden;
-      backdrop-filter: blur(12px);
-      animation: fadeUp 0.9s ease both;
-      animation-delay: 0.15s;
+      border-radius: 14px;
+      background: rgba(17,17,20,0.68);
+      backdrop-filter: blur(10px);
+      max-width: 520px;
     }
 
-    .hcard-top {
-      padding: 24px 28px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hcard-label {
-      font-size: 0.66rem;
+    .offer-main {
+      font-size: 1rem;
       font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .offer-sub {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      margin-bottom: 6px;
+      font-weight: 300;
+    }
+
+    .offer-trust {
+      font-size: 0.75rem;
       color: var(--text-3);
-      margin-bottom: 4px;
+      font-weight: 300;
     }
 
-    .hcard-title {
-      font-family: 'Cormorant', serif;
-      font-size: 1.35rem;
-      font-weight: 400;
-    }
-
-    .hcard-service {
+    .hero-actions {
       display: flex;
       align-items: center;
       gap: 14px;
-      padding: 18px 28px;
-      border-bottom: 1px solid var(--border);
-      transition: background 0.2s;
+      flex-wrap: wrap;
     }
 
-    .hcard-service:last-child { border-bottom: none; }
-    .hcard-service:hover { background: var(--surface-2); cursor: pointer; }
-
-    .hcs-icon {
-      width: 38px; height: 38px;
-      border-radius: 9px;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      overflow: hidden;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .hcs-icon img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      opacity: 0.85;
-    }
-
-    .hcs-info { flex: 1; }
-
-    .hcs-name {
-      font-size: 0.88rem;
-      font-weight: 400;
-      color: var(--text);
-    }
-
-    .hcs-sub {
-      font-size: 0.74rem;
+    .hero-note {
+      font-size: 0.78rem;
       color: var(--text-3);
       font-weight: 300;
     }
 
-    .hcs-price {
-      font-family: 'Cormorant', serif;
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: var(--gold);
-      white-space: nowrap;
-    }
-
-    /* ─── SERVICES ─── */
+    /* SERVICES */
     .services-sec {
       background: var(--surface);
       border-top: 1px solid var(--border);
@@ -481,7 +443,22 @@
       background: var(--gold-dim);
     }
 
-    /* ─── ABOUT ─── */
+    /* PROCESS */
+    .process-sec {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 100px 0;
+    }
+
+    .process-sec .svc {
+      background: var(--bg);
+    }
+
+    .process-sec .svc:hover {
+      background: var(--surface-2);
+    }
+
+    /* ABOUT */
     .about-sec {
       background: var(--bg);
       padding: 100px 0;
@@ -511,7 +488,6 @@
       margin-bottom: 32px;
     }
 
-    /* about image */
     .about-img {
       width: 100%;
       height: 200px;
@@ -604,45 +580,7 @@
       font-size: 0.8rem;
     }
 
-    /* global icon strip */
-    .global-strip {
-      border-top: 1px solid var(--border);
-      background: var(--surface);
-      padding: 32px 0;
-    }
-
-    .strip-in {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 48px;
-      flex-wrap: wrap;
-    }
-
-    .strip-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      opacity: 0.5;
-      transition: opacity 0.2s;
-    }
-
-    .strip-item:hover { opacity: 0.8; }
-
-    .strip-item img {
-      width: 28px; height: 28px;
-      object-fit: contain;
-      filter: grayscale(1) brightness(2);
-    }
-
-    .strip-item span {
-      font-size: 0.8rem;
-      color: var(--text-2);
-      font-weight: 300;
-      letter-spacing: 0.06em;
-    }
-
-    /* ─── BOOKING MODAL ─── */
+    /* MODAL */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -732,7 +670,6 @@
 
     .modal-body { padding: 26px 30px 30px; }
 
-    /* service pills */
     .modal-services {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -799,7 +736,6 @@
       margin: 20px 0;
     }
 
-    /* form */
     .f-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -903,7 +839,7 @@
       font-weight: 300;
     }
 
-    /* ─── FOOTER ─── */
+    /* FOOTER */
     .ftr {
       background: var(--surface);
       border-top: 1px solid var(--border);
@@ -933,16 +869,12 @@
 
     .ftr-links a:hover { color: var(--text-2); }
 
-    /* ─── ANIMATIONS ─── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(22px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ─── RESPONSIVE ─── */
     @media (max-width: 1024px) {
-      .hero-in { grid-template-columns: 1fr; }
-      .hero-card { max-width: 400px; }
       .services-grid { grid-template-columns: 1fr; }
       .services-head { grid-template-columns: 1fr; }
       .about-grid { grid-template-columns: 1fr; }
@@ -951,8 +883,8 @@
 
     @media (max-width: 640px) {
       .wrap { width: calc(100% - 32px); }
-      section { padding: 72px 0; }
       .hero h1 { font-size: 3rem; }
+      .hero-in { padding: 60px 0; }
       .modal-services { grid-template-columns: 1fr; }
       .f-row { grid-template-columns: 1fr; }
       .about-l, .about-r { padding: 30px 22px; }
@@ -960,9 +892,9 @@
     }
   </style>
 </head>
+
 <body>
 
-  <!-- ─── HEADER ─── -->
   <header class="hdr">
     <div class="wrap hdr-in">
       <a href="#top" class="logo">
@@ -972,17 +904,19 @@
           <span>Tax · Business · Digital</span>
         </div>
       </a>
+
       <nav class="hdr-nav">
         <a href="#services">Services</a>
+        <a href="#process">Process</a>
         <a href="#about">About</a>
       </nav>
+
       <button class="btn-book" onclick="openModal()">Book Appointment</button>
     </div>
   </header>
 
   <main id="top">
 
-    <!-- ─── HERO ─── -->
     <section class="hero">
       <div class="hero-bg">
         <img src="lobby1.png" alt="" />
@@ -991,57 +925,30 @@
       <div class="wrap hero-in">
         <div class="hero-left">
           <div class="hero-tag">Professional Services</div>
-          <h1>Strategic<br>clarity for<br><em>your goals.</em></h1>
-          <p class="hero-desc">
-            Tax services, business consulting, and digital solutions —
-            built for entrepreneurs and individuals who demand
-            organized, professional support.
-          </p>
-          <button class="btn-book" onclick="openModal()" style="font-size:0.9rem; padding:13px 28px; border-radius:10px;">
-            Book an Appointment
-          </button>
-        </div>
 
-        <div class="hero-card">
-          <div class="hcard-top">
-            <div class="hcard-label">Consultation Pricing</div>
-            <div class="hcard-title">What we offer</div>
+          <h1>Clear guidance<br>for your<br><em>next move.</em></h1>
+
+          <p class="hero-desc">
+            Tax, business, and digital consulting — delivered in one clear,
+            professional consultation designed to help you move forward with confidence.
+          </p>
+
+          <div class="hero-offer">
+            <p class="offer-main">45-minute consultation · $44.99</p>
+            <p class="offer-sub">Clear, actionable guidance tailored to your situation.</p>
+            <p class="offer-trust">No upfront payment · Confirmation within 24 hours</p>
           </div>
-          <div class="hcard-service" onclick="openModal('Tax Services')">
-            <div class="hcs-icon">
-              <img src="iconpage1.png" alt="Tax" />
-            </div>
-            <div class="hcs-info">
-              <div class="hcs-name">Tax Services</div>
-              <div class="hcs-sub">Planning & compliance</div>
-            </div>
-            <span class="hcs-price">$44.99</span>
-          </div>
-          <div class="hcard-service" onclick="openModal('Business Consulting')">
-            <div class="hcs-icon">
-              <img src="globalicon1.png" alt="Business" />
-            </div>
-            <div class="hcs-info">
-              <div class="hcs-name">Business Consulting</div>
-              <div class="hcs-sub">Strategy & growth</div>
-            </div>
-            <span class="hcs-price">$44.99</span>
-          </div>
-          <div class="hcard-service" onclick="openModal('Digital Solutions')">
-            <div class="hcs-icon">
-              <img src="iconweb1.png" alt="Digital" />
-            </div>
-            <div class="hcs-info">
-              <div class="hcs-name">Digital Solutions</div>
-              <div class="hcs-sub">Web presence & automation</div>
-            </div>
-            <span class="hcs-price">$44.99</span>
+
+          <div class="hero-actions">
+            <button class="btn-book" onclick="openModal()" style="font-size:0.9rem; padding:13px 28px; border-radius:10px;">
+              Book an Appointment
+            </button>
+            <span class="hero-note">Tax · Business · Digital</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ─── SERVICES ─── -->
     <section id="services" class="services-sec">
       <div class="wrap">
         <div class="services-head">
@@ -1057,14 +964,15 @@
 
         <div class="services-grid">
 
-          <!-- Tax -->
           <div class="svc">
             <div class="svc-num">01 — TAX SERVICES</div>
             <div class="svc-img">
               <img src="city1.png" alt="Tax Services" />
             </div>
             <div class="svc-name">Tax Services</div>
-            <p class="svc-desc">Professional tax preparation, planning, and compliance strategies to keep you organized and ahead.</p>
+            <p class="svc-desc">
+              Professional tax preparation, planning, and compliance strategies to keep you organized and ahead.
+            </p>
             <ul class="svc-features">
               <li>General tax consultation</li>
               <li>Tax planning guidance</li>
@@ -1073,19 +981,20 @@
             </ul>
             <div class="svc-price-row">
               <span class="svc-price-amount">$44.99</span>
-              <span class="svc-price-label">/ consultation</span>
+              <span class="svc-price-label">/ 45-minute consultation</span>
             </div>
             <button class="svc-cta" onclick="openModal('Tax Services')">Book Tax Consultation →</button>
           </div>
 
-          <!-- Business -->
           <div class="svc">
             <div class="svc-num">02 — BUSINESS CONSULTING</div>
             <div class="svc-img">
               <img src="background1.png" alt="Business Consulting" />
             </div>
             <div class="svc-name">Business Consulting</div>
-            <p class="svc-desc">Strategic guidance to help your business grow, optimize operations, and make better long-term decisions.</p>
+            <p class="svc-desc">
+              Strategic guidance to help your business grow, optimize operations, and make better long-term decisions.
+            </p>
             <ul class="svc-features">
               <li>Business strategy consultation</li>
               <li>Operational improvement</li>
@@ -1094,19 +1003,20 @@
             </ul>
             <div class="svc-price-row">
               <span class="svc-price-amount">$44.99</span>
-              <span class="svc-price-label">/ consultation</span>
+              <span class="svc-price-label">/ 45-minute consultation</span>
             </div>
             <button class="svc-cta" onclick="openModal('Business Consulting')">Book Business Consultation →</button>
           </div>
 
-          <!-- Digital -->
           <div class="svc">
             <div class="svc-num">03 — DIGITAL SOLUTIONS</div>
             <div class="svc-img">
               <img src="Servers1.png" alt="Digital Solutions" />
             </div>
             <div class="svc-name">Digital Solutions</div>
-            <p class="svc-desc">Modern web and digital tools designed to strengthen your presence, streamline workflows, and scale your brand.</p>
+            <p class="svc-desc">
+              Modern web and digital tools designed to strengthen your presence, streamline workflows, and scale your brand.
+            </p>
             <ul class="svc-features">
               <li>Website & presence consultation</li>
               <li>Tools & systems recommendations</li>
@@ -1115,7 +1025,7 @@
             </ul>
             <div class="svc-price-row">
               <span class="svc-price-amount">$44.99</span>
-              <span class="svc-price-label">/ consultation</span>
+              <span class="svc-price-label">/ 45-minute consultation</span>
             </div>
             <button class="svc-cta" onclick="openModal('Digital Solutions')">Book Digital Consultation →</button>
           </div>
@@ -1124,21 +1034,63 @@
       </div>
     </section>
 
+    <section id="process" class="process-sec">
+      <div class="wrap">
+        <div class="services-head">
+          <div>
+            <div class="sec-eyebrow">Process</div>
+            <h2 class="sec-h2">Simple. Clear.<br>Professional.</h2>
+          </div>
+          <p class="sec-sub">
+            A straightforward consultation process designed to give you clarity without complexity.
+          </p>
+        </div>
 
-    <!-- ─── ABOUT ─── -->
+        <div class="services-grid">
+          <div class="svc">
+            <div class="svc-num">01</div>
+            <div class="svc-name">Book Your Session</div>
+            <p class="svc-desc">
+              Choose your service and submit your request in seconds. No upfront payment required.
+            </p>
+          </div>
+
+          <div class="svc">
+            <div class="svc-num">02</div>
+            <div class="svc-name">Get Confirmed</div>
+            <p class="svc-desc">
+              You’ll receive confirmation within 24 hours with the next steps for your consultation.
+            </p>
+          </div>
+
+          <div class="svc">
+            <div class="svc-num">03</div>
+            <div class="svc-name">Receive Guidance</div>
+            <p class="svc-desc">
+              Get clear recommendations tailored to your tax, business, or digital situation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="about" class="about-sec">
       <div class="wrap">
         <div class="about-grid">
           <div class="about-l">
             <div class="sec-eyebrow">About EPPS</div>
-            <h2 class="sec-h2" style="margin-bottom:14px;">Trusted expertise delivering reliable professional service.</h2>
+            <h2 class="sec-h2" style="margin-bottom:14px;">
+              Trusted expertise delivering reliable professional service.
+            </h2>
             <p>
               EPPS is built around one idea: deliver reliable, professional consulting
-              that is easy and simple to manage.
+              that is easy, simple, and clear to manage.
             </p>
+
             <div class="about-img">
               <img src="Here1.png" alt="About EPPS" />
             </div>
+
             <div class="about-points">
               <div class="ap">
                 <strong>Professional</strong>
@@ -1146,7 +1098,7 @@
               </div>
               <div class="ap">
                 <strong>Strategic</strong>
-                <p>Recommendations built for long-term impact, not short-term fixes.</p>
+                <p>Recommendations built for long-term impact, not short-term confusion.</p>
               </div>
               <div class="ap">
                 <strong>Organized</strong>
@@ -1154,18 +1106,19 @@
               </div>
             </div>
           </div>
+
           <div class="about-r">
             <div class="sec-eyebrow" style="margin-bottom:16px;">Why EPPS</div>
             <h3>Trusted guidance.<br>Modern execution.</h3>
             <p>
               EPPS combines a credible professional image with direct, practical service —
-              creating a brand clients rely on to move forward with clarity and confidence.
+              creating a client experience built on clarity, trust, and action.
             </p>
             <ul class="about-list">
               <li>Clean, focused consultation experience</li>
-              <li>Tax, business, and digital expertise in one place</li>
+              <li>Tax, business, and digital guidance in one place</li>
               <li>Flat-rate pricing — no surprises, no hidden fees</li>
-              <li>Built for entrepreneurs and growing businesses</li>
+              <li>Built for individuals, entrepreneurs, and growing businesses</li>
             </ul>
           </div>
         </div>
@@ -1174,19 +1127,18 @@
 
   </main>
 
-  <!-- ─── FOOTER ─── -->
   <footer class="ftr">
     <div class="wrap ftr-in">
       <span class="ftr-copy">© 2026 Esteban Perez Professional Services. All rights reserved.</span>
       <div class="ftr-links">
         <a href="#services">Services</a>
+        <a href="#process">Process</a>
         <a href="#about">About</a>
         <a href="#" onclick="openModal(); return false;">Book</a>
       </div>
     </div>
   </footer>
 
-  <!-- ─── BOOKING MODAL ─── -->
   <div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
     <div class="modal" id="modal">
 
@@ -1200,7 +1152,9 @@
 
       <div class="modal-body">
 
-        <p style="font-size:0.74rem; font-weight:500; color:var(--text-2); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:10px;">Select a Service</p>
+        <p style="font-size:0.74rem; font-weight:500; color:var(--text-2); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:10px;">
+          Select a Service
+        </p>
 
         <div class="modal-services">
           <div class="ms-pill" data-service="Tax Services" onclick="selectService(this)">
@@ -1208,11 +1162,13 @@
             <span class="ms-pill-name">Tax Services</span>
             <span class="ms-pill-price">$44.99</span>
           </div>
+
           <div class="ms-pill" data-service="Business Consulting" onclick="selectService(this)">
             <div class="ms-pill-img"><img src="globalicon1.png" alt="Business" /></div>
             <span class="ms-pill-name">Business Consulting</span>
             <span class="ms-pill-price">$44.99</span>
           </div>
+
           <div class="ms-pill" data-service="Digital Solutions" onclick="selectService(this)">
             <div class="ms-pill-img"><img src="iconweb1.png" alt="Digital" /></div>
             <span class="ms-pill-name">Digital Solutions</span>
@@ -1234,14 +1190,17 @@
               <label>Full Name *</label>
               <input type="text" name="name" placeholder="Your full name" required />
             </div>
+
             <div class="f-group">
               <label>Email Address *</label>
               <input type="email" name="email" placeholder="you@example.com" required />
             </div>
+
             <div class="f-group">
               <label>Phone Number</label>
               <input type="text" name="phone" placeholder="(000) 000-0000" />
             </div>
+
             <div class="f-group">
               <label>Best Time to Reach You</label>
               <select name="preferred_time">
@@ -1251,6 +1210,7 @@
                 <option>Evening (5pm – 8pm)</option>
               </select>
             </div>
+
             <div class="f-group full">
               <label>How can EPPS help you? *</label>
               <textarea name="message" placeholder="Brief description of what you need help with..." required></textarea>
@@ -1268,7 +1228,10 @@
           </div>
 
           <button type="submit" class="modal-submit">Confirm Booking Request</button>
-          <p class="modal-footnote">We'll confirm within 24 hours · Payment collected at session</p>
+
+          <p class="modal-footnote">
+            45-minute consultation · No upfront payment · Confirmation within 24 hours
+          </p>
         </form>
 
       </div>
@@ -1279,6 +1242,7 @@
     function openModal(service) {
       document.getElementById('modalOverlay').classList.add('open');
       document.body.style.overflow = 'hidden';
+
       if (service) {
         const pill = document.querySelector(`.ms-pill[data-service="${service}"]`);
         if (pill) selectService(pill);
@@ -1297,7 +1261,9 @@
     function selectService(el) {
       document.querySelectorAll('.ms-pill').forEach(p => p.classList.remove('active'));
       el.classList.add('active');
+
       const svc = el.dataset.service;
+
       document.getElementById('hiddenService').value = svc + ' — $44.99';
       document.getElementById('summaryService').textContent = svc;
       document.getElementById('summaryPrice').textContent = '$44.99';
