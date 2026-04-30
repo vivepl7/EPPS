@@ -18,8 +18,8 @@
       --gold-dim:  rgba(201,168,76,0.15);
       --gold-line: rgba(201,168,76,0.35);
       --text:      #f0ede8;
-      --text-2:    #9a9490;
-      --text-3:    #5a5650;
+      --text-2:    #b8b2ad;
+      --text-3:    #7a756f;
       --max:       1120px;
       --r:         16px;
     }
@@ -96,6 +96,35 @@
 
     .hdr-nav a:hover { color: var(--text); }
 
+
+    .hdr-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 35px;
+      min-width: 46px;
+      padding: 0 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border-2);
+      background: transparent;
+      color: var(--gold);
+      font: 600 0.78rem 'Geist', sans-serif;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: all 0.2s ease;
+    }
+
+    .lang-toggle:hover {
+      border-color: var(--gold-line);
+      background: var(--gold-dim);
+    }
+
     .btn-book {
       display: inline-flex;
       align-items: center;
@@ -162,8 +191,8 @@
       position: relative;
       z-index: 2;
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 60px;
+      grid-template-columns: minmax(0, 1fr) 420px;
+      gap: 64px;
       align-items: center;
       padding: 80px 0;
     }
@@ -171,6 +200,39 @@
     .hero-left {
       max-width: 720px;
       animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeUp 0.9s ease both;
+      animation-delay: 0.12s;
+    }
+
+    .hero-right-card {
+      position: relative;
+      width: 100%;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid var(--border-2);
+      background: rgba(17,17,20,0.55);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.35);
+    }
+
+    .hero-right-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,11,0.28), transparent 55%);
+      pointer-events: none;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      opacity: 0.92;
     }
 
     .hero-tag {
@@ -875,6 +937,9 @@
     }
 
     @media (max-width: 1024px) {
+      .hero-in { grid-template-columns: 1fr; }
+      .hero-right { max-width: 460px; }
+      .hero-right img { height: 420px; }
       .services-grid { grid-template-columns: 1fr; }
       .services-head { grid-template-columns: 1fr; }
       .about-grid { grid-template-columns: 1fr; }
@@ -885,6 +950,10 @@
       .wrap { width: calc(100% - 32px); }
       .hero h1 { font-size: 3rem; }
       .hero-in { padding: 60px 0; }
+      .logo-text strong { font-size: 0.74rem; }
+      .logo-text span { font-size: 0.64rem; }
+      .hdr-actions .btn-book { padding: 8px 12px; font-size: 0.72rem; }
+      .hero-right img { height: 340px; }
       .modal-services { grid-template-columns: 1fr; }
       .f-row { grid-template-columns: 1fr; }
       .about-l, .about-r { padding: 30px 22px; }
@@ -906,12 +975,15 @@
       </a>
 
       <nav class="hdr-nav">
-        <a href="#services">Services</a>
-        <a href="#process">Process</a>
-        <a href="#about">About</a>
+        <a href="#services" data-i18n="navServices">Services</a>
+        <a href="#process" data-i18n="navProcess">Process</a>
+        <a href="#about" data-i18n="navAbout">About</a>
       </nav>
 
-      <button class="btn-book" onclick="openModal()">Book Appointment</button>
+      <div class="hdr-actions">
+        <button class="lang-toggle" onclick="toggleLanguage()" id="langBtn">ES</button>
+        <button class="btn-book" onclick="openModal()" data-i18n="bookAppointment">Book Appointment</button>
+      </div>
     </div>
   </header>
 
@@ -924,26 +996,32 @@
 
       <div class="wrap hero-in">
         <div class="hero-left">
-          <div class="hero-tag">Professional Services</div>
+          <div class="hero-tag" data-i18n="heroTag">Professional Services</div>
 
-          <h1>Clear guidance<br>for your<br><em>next move.</em></h1>
+          <h1 data-i18n-html="heroTitle">Clear guidance<br>for your<br><em>next move.</em></h1>
 
-          <p class="hero-desc">
+          <p class="hero-desc" data-i18n="heroDesc">
             Tax, business, and digital consulting — delivered in one clear,
             professional consultation designed to help you move forward with confidence.
           </p>
 
           <div class="hero-offer">
-            <p class="offer-main">45-minute consultation · $44.99</p>
-            <p class="offer-sub">Clear, actionable guidance tailored to your situation.</p>
-            <p class="offer-trust">No upfront payment · Confirmation within 24 hours</p>
+            <p class="offer-main" data-i18n="offerMain">45-minute consultation · $44.99</p>
+            <p class="offer-sub" data-i18n="offerSub">Clear, actionable guidance tailored to your situation.</p>
+            <p class="offer-trust" data-i18n="offerTrust">No upfront payment · Confirmation within 24 hours</p>
           </div>
 
           <div class="hero-actions">
             <button class="btn-book" onclick="openModal()" style="font-size:0.9rem; padding:13px 28px; border-radius:10px;">
-              Book an Appointment
+              <span data-i18n="bookAppointment">Book an Appointment</span>
             </button>
-            <span class="hero-note">Tax · Business · Digital</span>
+            <span class="hero-note" data-i18n="tagline">Tax · Business · Digital</span>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-right-card">
+            <img src="Designer.png" alt="Professional consultation" />
           </div>
         </div>
       </div>
@@ -953,10 +1031,10 @@
       <div class="wrap">
         <div class="services-head">
           <div>
-            <div class="sec-eyebrow">Services</div>
-            <h2 class="sec-h2">Three service lines.<br>One trusted team.</h2>
+            <div class="sec-eyebrow" data-i18n="servicesEyebrow">Services</div>
+            <h2 class="sec-h2" data-i18n-html="servicesTitle">Three service lines.<br>One trusted team.</h2>
           </div>
-          <p class="sec-sub">
+          <p class="sec-sub" data-i18n="servicesSub">
             Each service is structured to deliver clear, professional consultation
             with practical outcomes.
           </p>
@@ -965,69 +1043,69 @@
         <div class="services-grid">
 
           <div class="svc">
-            <div class="svc-num">01 — TAX SERVICES</div>
+            <div class="svc-num"><span data-i18n="taxNum">01 — TAX SERVICES</span></div>
             <div class="svc-img">
               <img src="city1.png" alt="Tax Services" />
             </div>
-            <div class="svc-name">Tax Services</div>
-            <p class="svc-desc">
+            <div class="svc-name" data-i18n="taxName">Tax Services</div>
+            <p class="svc-desc" data-i18n="taxDesc">
               Professional tax preparation, planning, and compliance strategies to keep you organized and ahead.
             </p>
             <ul class="svc-features">
-              <li>General tax consultation</li>
-              <li>Tax planning guidance</li>
-              <li>Review of tax situations</li>
-              <li>File 1040, 1065 or 1120</li>
+              <li data-i18n="taxF1">General tax consultation</li>
+              <li data-i18n="taxF2">Tax planning guidance</li>
+              <li data-i18n="taxF3">Review of tax situations</li>
+              <li data-i18n="taxF4">File 1040, 1065 or 1120</li>
             </ul>
             <div class="svc-price-row">
               <span class="svc-price-amount">$44.99</span>
-              <span class="svc-price-label">/ 45-minute consultation</span>
+              <span class="svc-price-label" data-i18n="priceLabel">/ 45-minute consultation</span>
             </div>
-            <button class="svc-cta" onclick="openModal('Tax Services')">Book Tax Consultation →</button>
+            <button class="svc-cta" onclick="openModal('Tax Services')"><span data-i18n="taxCta">Book Tax Consultation →</span></button>
           </div>
 
           <div class="svc">
-            <div class="svc-num">02 — BUSINESS CONSULTING</div>
+            <div class="svc-num"><span data-i18n="businessNum">02 — BUSINESS CONSULTING</span></div>
             <div class="svc-img">
               <img src="background1.png" alt="Business Consulting" />
             </div>
-            <div class="svc-name">Business Consulting</div>
-            <p class="svc-desc">
+            <div class="svc-name" data-i18n="businessName">Business Consulting</div>
+            <p class="svc-desc" data-i18n="businessDesc">
               Strategic guidance to help your business grow, optimize operations, and make better long-term decisions.
             </p>
             <ul class="svc-features">
-              <li>Business strategy consultation</li>
-              <li>Operational improvement</li>
-              <li>Decision support & clarity</li>
-              <li>Growth-focused recommendations</li>
+              <li data-i18n="businessF1">Business strategy consultation</li>
+              <li data-i18n="businessF2">Operational improvement</li>
+              <li data-i18n="businessF3">Decision support & clarity</li>
+              <li data-i18n="businessF4">Growth-focused recommendations</li>
             </ul>
             <div class="svc-price-row">
               <span class="svc-price-amount">$44.99</span>
-              <span class="svc-price-label">/ 45-minute consultation</span>
+              <span class="svc-price-label" data-i18n="priceLabel">/ 45-minute consultation</span>
             </div>
-            <button class="svc-cta" onclick="openModal('Business Consulting')">Book Business Consultation →</button>
+            <button class="svc-cta" onclick="openModal('Business Consulting')"><span data-i18n="businessCta">Book Business Consultation →</span></button>
           </div>
 
           <div class="svc">
-            <div class="svc-num">03 — DIGITAL SOLUTIONS</div>
+            <div class="svc-num"><span data-i18n="digitalNum">03 — DIGITAL SOLUTIONS</span></div>
             <div class="svc-img">
               <img src="Servers1.png" alt="Digital Solutions" />
             </div>
-            <div class="svc-name">Digital Solutions</div>
-            <p class="svc-desc">
+            <div class="svc-name" data-i18n="digitalName">Digital Solutions</div>
+            <p class="svc-desc" data-i18n="digitalDesc">
               Modern web and digital tools designed to strengthen your presence, streamline workflows, and scale your brand.
             </p>
             <ul class="svc-features">
-              <li>Website & presence consultation</li>
-              <li>Tools & systems recommendations</li>
-              <li>Workflow & automation ideas</li>
-              <li>Digital strategy for small businesses</li>
+              <li data-i18n="digitalF1">Website & presence consultation</li>
+              <li data-i18n="digitalF2">Tools & systems recommendations</li>
+              <li data-i18n="digitalF3">Workflow & automation ideas</li>
+              <li data-i18n="digitalF4">Digital strategy for small businesses</li>
             </ul>
             <div class="svc-price-row">
               <span class="svc-price-amount">$44.99</span>
-              <span class="svc-price-label">/ 45-minute consultation</span>
+              <span class="svc-price-label" data-i18n="priceLabel">/ 45-minute consultation</span>
             </div>
-            <button class="svc-cta" onclick="openModal('Digital Solutions')">Book Digital Consultation →</button>
+            <button class="svc-cta" onclick="openModal('Digital Solutions')"><span data-i18n="digitalCta">Book Digital Consultation →</span></button>
           </div>
 
         </div>
@@ -1038,10 +1116,10 @@
       <div class="wrap">
         <div class="services-head">
           <div>
-            <div class="sec-eyebrow">Process</div>
-            <h2 class="sec-h2">Simple. Clear.<br>Professional.</h2>
+            <div class="sec-eyebrow" data-i18n="processEyebrow">Process</div>
+            <h2 class="sec-h2" data-i18n-html="processTitle">Simple. Clear.<br>Professional.</h2>
           </div>
-          <p class="sec-sub">
+          <p class="sec-sub" data-i18n="processSub">
             A straightforward consultation process designed to give you clarity without complexity.
           </p>
         </div>
@@ -1049,24 +1127,24 @@
         <div class="services-grid">
           <div class="svc">
             <div class="svc-num">01</div>
-            <div class="svc-name">Book Your Session</div>
-            <p class="svc-desc">
+            <div class="svc-name" data-i18n="process1Title">Book Your Session</div>
+            <p class="svc-desc" data-i18n="process1Desc">
               Choose your service and submit your request in seconds. No upfront payment required.
             </p>
           </div>
 
           <div class="svc">
             <div class="svc-num">02</div>
-            <div class="svc-name">Get Confirmed</div>
-            <p class="svc-desc">
+            <div class="svc-name" data-i18n="process2Title">Get Confirmed</div>
+            <p class="svc-desc" data-i18n="process2Desc">
               You’ll receive confirmation within 24 hours with the next steps for your consultation.
             </p>
           </div>
 
           <div class="svc">
             <div class="svc-num">03</div>
-            <div class="svc-name">Receive Guidance</div>
-            <p class="svc-desc">
+            <div class="svc-name" data-i18n="process3Title">Receive Guidance</div>
+            <p class="svc-desc" data-i18n="process3Desc">
               Get clear recommendations tailored to your tax, business, or digital situation.
             </p>
           </div>
@@ -1078,11 +1156,11 @@
       <div class="wrap">
         <div class="about-grid">
           <div class="about-l">
-            <div class="sec-eyebrow">About EPPS</div>
-            <h2 class="sec-h2" style="margin-bottom:14px;">
+            <div class="sec-eyebrow" data-i18n="aboutEyebrow">About EPPS</div>
+            <h2 class="sec-h2" style="margin-bottom:14px;" data-i18n="aboutTitle">
               Trusted expertise delivering reliable professional service.
             </h2>
-            <p>
+            <p data-i18n="aboutDesc">
               EPPS is built around one idea: deliver reliable, professional consulting
               that is easy, simple, and clear to manage.
             </p>
@@ -1093,32 +1171,32 @@
 
             <div class="about-points">
               <div class="ap">
-                <strong>Professional</strong>
-                <p>Clear communication, premium presentation, dependable execution.</p>
+                <strong data-i18n="aboutPoint1">Professional</strong>
+                <p data-i18n="aboutPoint1Desc">Clear communication, premium presentation, dependable execution.</p>
               </div>
               <div class="ap">
-                <strong>Strategic</strong>
-                <p>Recommendations built for long-term impact, not short-term confusion.</p>
+                <strong data-i18n="aboutPoint2">Strategic</strong>
+                <p data-i18n="aboutPoint2Desc">Recommendations built for long-term impact, not short-term confusion.</p>
               </div>
               <div class="ap">
-                <strong>Organized</strong>
-                <p>A structured client experience that builds confidence from day one.</p>
+                <strong data-i18n="aboutPoint3">Organized</strong>
+                <p data-i18n="aboutPoint3Desc">A structured client experience that builds confidence from day one.</p>
               </div>
             </div>
           </div>
 
           <div class="about-r">
-            <div class="sec-eyebrow" style="margin-bottom:16px;">Why EPPS</div>
-            <h3>Trusted guidance.<br>Modern execution.</h3>
-            <p>
+            <div class="sec-eyebrow" style="margin-bottom:16px;" data-i18n="whyEyebrow">Why EPPS</div>
+            <h3 data-i18n-html="whyTitle">Trusted guidance.<br>Modern execution.</h3>
+            <p data-i18n="whyDesc">
               EPPS combines a credible professional image with direct, practical service —
               creating a client experience built on clarity, trust, and action.
             </p>
             <ul class="about-list">
-              <li>Clean, focused consultation experience</li>
-              <li>Tax, business, and digital guidance in one place</li>
-              <li>Flat-rate pricing — no surprises, no hidden fees</li>
-              <li>Built for individuals, entrepreneurs, and growing businesses</li>
+              <li data-i18n="whyF1">Clean, focused consultation experience</li>
+              <li data-i18n="whyF2">Tax, business, and digital guidance in one place</li>
+              <li data-i18n="whyF3">Flat-rate pricing — no surprises, no hidden fees</li>
+              <li data-i18n="whyF4">Built for individuals, entrepreneurs, and growing businesses</li>
             </ul>
           </div>
         </div>
@@ -1129,11 +1207,11 @@
 
   <footer class="ftr">
     <div class="wrap ftr-in">
-      <span class="ftr-copy">© 2026 Esteban Perez Professional Services. All rights reserved.</span>
+      <span class="ftr-copy" data-i18n="footerCopy">© 2026 Esteban Perez Professional Services. All rights reserved.</span>
       <div class="ftr-links">
-        <a href="#services">Services</a>
-        <a href="#process">Process</a>
-        <a href="#about">About</a>
+        <a href="#services" data-i18n="navServices">Services</a>
+        <a href="#process" data-i18n="navProcess">Process</a>
+        <a href="#about" data-i18n="navAbout">About</a>
         <a href="#" onclick="openModal(); return false;">Book</a>
       </div>
     </div>
@@ -1144,8 +1222,8 @@
 
       <div class="modal-hdr">
         <div>
-          <div class="modal-eyebrow">EPPS Consultation</div>
-          <h2>Book an Appointment</h2>
+          <div class="modal-eyebrow" data-i18n="modalEyebrow">EPPS Consultation</div>
+          <h2 data-i18n="modalTitle">Book an Appointment</h2>
         </div>
         <button class="modal-close" onclick="closeModal()">✕</button>
       </div>
@@ -1153,25 +1231,25 @@
       <div class="modal-body">
 
         <p style="font-size:0.74rem; font-weight:500; color:var(--text-2); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:10px;">
-          Select a Service
+          <span data-i18n="selectService">Select a Service</span>
         </p>
 
         <div class="modal-services">
           <div class="ms-pill" data-service="Tax Services" onclick="selectService(this)">
             <div class="ms-pill-img"><img src="iconpage1.png" alt="Tax" /></div>
-            <span class="ms-pill-name">Tax Services</span>
+            <span class="ms-pill-name" data-i18n="taxName">Tax Services</span>
             <span class="ms-pill-price">$44.99</span>
           </div>
 
           <div class="ms-pill" data-service="Business Consulting" onclick="selectService(this)">
             <div class="ms-pill-img"><img src="globalicon1.png" alt="Business" /></div>
-            <span class="ms-pill-name">Business Consulting</span>
+            <span class="ms-pill-name" data-i18n="businessName">Business Consulting</span>
             <span class="ms-pill-price">$44.99</span>
           </div>
 
           <div class="ms-pill" data-service="Digital Solutions" onclick="selectService(this)">
             <div class="ms-pill-img"><img src="iconweb1.png" alt="Digital" /></div>
-            <span class="ms-pill-name">Digital Solutions</span>
+            <span class="ms-pill-name" data-i18n="digitalName">Digital Solutions</span>
             <span class="ms-pill-price">$44.99</span>
           </div>
         </div>
@@ -1187,33 +1265,33 @@
 
           <div class="f-row">
             <div class="f-group">
-              <label>Full Name *</label>
-              <input type="text" name="name" placeholder="Your full name" required />
+              <label data-i18n="fullName">Full Name *</label>
+              <input type="text" name="name" placeholder="Your full name" data-i18n-placeholder="fullNamePlaceholder" required />
             </div>
 
             <div class="f-group">
-              <label>Email Address *</label>
-              <input type="email" name="email" placeholder="you@example.com" required />
+              <label data-i18n="emailAddress">Email Address *</label>
+              <input type="email" name="email" placeholder="you@example.com" data-i18n-placeholder="emailPlaceholder" required />
             </div>
 
             <div class="f-group">
-              <label>Phone Number</label>
+              <label data-i18n="phoneNumber">Phone Number</label>
               <input type="text" name="phone" placeholder="(000) 000-0000" />
             </div>
 
             <div class="f-group">
-              <label>Best Time to Reach You</label>
+              <label data-i18n="bestTime">Best Time to Reach You</label>
               <select name="preferred_time">
-                <option value="" disabled selected>Preferred time</option>
-                <option>Morning (9am – 12pm)</option>
-                <option>Afternoon (12pm – 5pm)</option>
-                <option>Evening (5pm – 8pm)</option>
+                <option value="" disabled selected data-i18n="preferredTime">Preferred time</option>
+                <option data-i18n="morning">Morning (9am – 12pm)</option>
+                <option data-i18n="afternoon">Afternoon (12pm – 5pm)</option>
+                <option data-i18n="evening">Evening (5pm – 8pm)</option>
               </select>
             </div>
 
             <div class="f-group full">
-              <label>How can EPPS help you? *</label>
-              <textarea name="message" placeholder="Brief description of what you need help with..." required></textarea>
+              <label data-i18n="helpQuestion">How can EPPS help you? *</label>
+              <textarea name="message" placeholder="Brief description of what you need help with..." data-i18n-placeholder="messagePlaceholder" required></textarea>
             </div>
           </div>
 
@@ -1221,15 +1299,15 @@
 
           <div class="order-summary">
             <div>
-              <div class="os-label">Selected Service</div>
-              <div class="os-service" id="summaryService">— Select a service above —</div>
+              <div class="os-label" data-i18n="selectedService">Selected Service</div>
+              <div class="os-service" id="summaryService" data-i18n="selectServiceAbove">— Select a service above —</div>
             </div>
             <div class="os-price" id="summaryPrice">—</div>
           </div>
 
-          <button type="submit" class="modal-submit">Confirm Booking Request</button>
+          <button type="submit" class="modal-submit" data-i18n="confirmBooking">Confirm Booking Request</button>
 
-          <p class="modal-footnote">
+          <p class="modal-footnote" data-i18n="modalFootnote">
             45-minute consultation · No upfront payment · Confirmation within 24 hours
           </p>
         </form>
@@ -1239,6 +1317,108 @@
   </div>
 
   <script>
+    const translations = {
+      en: {
+        navServices: 'Services', navProcess: 'Process', navAbout: 'About', bookAppointment: 'Book Appointment', bookShort: 'Book',
+        heroTag: 'Professional Services',
+        heroTitle: 'Clear guidance<br>for your<br><em>next move.</em>',
+        heroDesc: 'Tax, business, and digital consulting — delivered in one clear, professional consultation designed to help you move forward with confidence.',
+        offerMain: '45-minute consultation · $44.99',
+        offerSub: 'Clear, actionable guidance tailored to your situation.',
+        offerTrust: 'No upfront payment · Confirmation within 24 hours',
+        tagline: 'Tax · Business · Digital',
+        servicesEyebrow: 'Services', servicesTitle: 'Three service lines.<br>One trusted team.',
+        servicesSub: 'Each service is structured to deliver clear, professional consultation with practical outcomes.',
+        taxNum: '01 — TAX SERVICES', taxName: 'Tax Services', taxDesc: 'Professional tax preparation, planning, and compliance strategies to keep you organized and ahead.',
+        taxF1: 'General tax consultation', taxF2: 'Tax planning guidance', taxF3: 'Review of tax situations', taxF4: 'File 1040, 1065 or 1120', taxCta: 'Book Tax Consultation →',
+        businessNum: '02 — BUSINESS CONSULTING', businessName: 'Business Consulting', businessDesc: 'Strategic guidance to help your business grow, optimize operations, and make better long-term decisions.',
+        businessF1: 'Business strategy consultation', businessF2: 'Operational improvement', businessF3: 'Decision support & clarity', businessF4: 'Growth-focused recommendations', businessCta: 'Book Business Consultation →',
+        digitalNum: '03 — DIGITAL SOLUTIONS', digitalName: 'Digital Solutions', digitalDesc: 'Modern web and digital tools designed to strengthen your presence, streamline workflows, and scale your brand.',
+        digitalF1: 'Website & presence consultation', digitalF2: 'Tools & systems recommendations', digitalF3: 'Workflow & automation ideas', digitalF4: 'Digital strategy for small businesses', digitalCta: 'Book Digital Consultation →',
+        priceLabel: '/ 45-minute consultation',
+        processEyebrow: 'Process', processTitle: 'Simple. Clear.<br>Professional.', processSub: 'A straightforward consultation process designed to give you clarity without complexity.',
+        process1Title: 'Book Your Session', process1Desc: 'Choose your service and submit your request in seconds. No upfront payment required.',
+        process2Title: 'Get Confirmed', process2Desc: 'You’ll receive confirmation within 24 hours with the next steps for your consultation.',
+        process3Title: 'Receive Guidance', process3Desc: 'Get clear recommendations tailored to your tax, business, or digital situation.',
+        aboutEyebrow: 'About EPPS', aboutTitle: 'Trusted expertise delivering reliable professional service.', aboutDesc: 'EPPS is built around one idea: deliver reliable, professional consulting that is easy, simple, and clear to manage.',
+        aboutPoint1: 'Professional', aboutPoint1Desc: 'Clear communication, premium presentation, dependable execution.',
+        aboutPoint2: 'Strategic', aboutPoint2Desc: 'Recommendations built for long-term impact, not short-term confusion.',
+        aboutPoint3: 'Organized', aboutPoint3Desc: 'A structured client experience that builds confidence from day one.',
+        whyEyebrow: 'Why EPPS', whyTitle: 'Trusted guidance.<br>Modern execution.', whyDesc: 'EPPS combines a credible professional image with direct, practical service — creating a client experience built on clarity, trust, and action.',
+        whyF1: 'Clean, focused consultation experience', whyF2: 'Tax, business, and digital guidance in one place', whyF3: 'Flat-rate pricing — no surprises, no hidden fees', whyF4: 'Built for individuals, entrepreneurs, and growing businesses',
+        footerCopy: '© 2026 Esteban Perez Professional Services. All rights reserved.',
+        modalEyebrow: 'EPPS Consultation', modalTitle: 'Book an Appointment', selectService: 'Select a Service',
+        fullName: 'Full Name *', fullNamePlaceholder: 'Your full name', emailAddress: 'Email Address *', emailPlaceholder: 'you@example.com', phoneNumber: 'Phone Number', bestTime: 'Best Time to Reach You', preferredTime: 'Preferred time', morning: 'Morning (9am – 12pm)', afternoon: 'Afternoon (12pm – 5pm)', evening: 'Evening (5pm – 8pm)', helpQuestion: 'How can EPPS help you? *', messagePlaceholder: 'Brief description of what you need help with...',
+        selectedService: 'Selected Service', selectServiceAbove: '— Select a service above —', confirmBooking: 'Confirm Booking Request', modalFootnote: '45-minute consultation · No upfront payment · Confirmation within 24 hours'
+      },
+      es: {
+        navServices: 'Servicios', navProcess: 'Proceso', navAbout: 'Acerca de', bookAppointment: 'Reservar cita', bookShort: 'Reservar',
+        heroTag: 'Servicios Profesionales',
+        heroTitle: 'Orientación clara<br>para tu<br><em>próximo paso.</em>',
+        heroDesc: 'Consultoría de impuestos, negocios y soluciones digitales — en una consulta clara y profesional diseñada para ayudarte a avanzar con confianza.',
+        offerMain: 'Consulta de 45 minutos · $44.99',
+        offerSub: 'Orientación clara y práctica adaptada a tu situación.',
+        offerTrust: 'Sin pago por adelantado · Confirmación dentro de 24 horas',
+        tagline: 'Impuestos · Negocios · Digital',
+        servicesEyebrow: 'Servicios', servicesTitle: 'Tres líneas de servicio.<br>Un equipo de confianza.',
+        servicesSub: 'Cada servicio está diseñado para ofrecer una consulta clara, profesional y con resultados prácticos.',
+        taxNum: '01 — SERVICIOS DE IMPUESTOS', taxName: 'Servicios de Impuestos', taxDesc: 'Preparación, planificación y estrategias de cumplimiento fiscal para mantenerte organizado y preparado.',
+        taxF1: 'Consulta general de impuestos', taxF2: 'Guía de planificación fiscal', taxF3: 'Revisión de situaciones fiscales', taxF4: 'Declaraciones 1040, 1065 o 1120', taxCta: 'Reservar consulta de impuestos →',
+        businessNum: '02 — CONSULTORÍA DE NEGOCIOS', businessName: 'Consultoría de Negocios', businessDesc: 'Guía estratégica para ayudar a tu negocio a crecer, optimizar operaciones y tomar mejores decisiones a largo plazo.',
+        businessF1: 'Consulta de estrategia empresarial', businessF2: 'Mejora operativa', businessF3: 'Apoyo y claridad para decisiones', businessF4: 'Recomendaciones enfocadas en crecimiento', businessCta: 'Reservar consulta de negocios →',
+        digitalNum: '03 — SOLUCIONES DIGITALES', digitalName: 'Soluciones Digitales', digitalDesc: 'Herramientas web y digitales modernas para fortalecer tu presencia, mejorar procesos y escalar tu marca.',
+        digitalF1: 'Consulta de sitio web y presencia digital', digitalF2: 'Recomendación de herramientas y sistemas', digitalF3: 'Ideas de flujo de trabajo y automatización', digitalF4: 'Estrategia digital para pequeños negocios', digitalCta: 'Reservar consulta digital →',
+        priceLabel: '/ consulta de 45 minutos',
+        processEyebrow: 'Proceso', processTitle: 'Simple. Claro.<br>Profesional.', processSub: 'Un proceso de consulta directo, diseñado para darte claridad sin complicaciones.',
+        process1Title: 'Reserva tu sesión', process1Desc: 'Elige tu servicio y envía tu solicitud en segundos. No se requiere pago por adelantado.',
+        process2Title: 'Recibe confirmación', process2Desc: 'Recibirás confirmación dentro de 24 horas con los siguientes pasos para tu consulta.',
+        process3Title: 'Recibe orientación', process3Desc: 'Obtén recomendaciones claras adaptadas a tu situación de impuestos, negocios o área digital.',
+        aboutEyebrow: 'Acerca de EPPS', aboutTitle: 'Experiencia confiable para entregar servicio profesional.', aboutDesc: 'EPPS se basa en una idea: ofrecer consultoría profesional, confiable, fácil, simple y clara de manejar.',
+        aboutPoint1: 'Profesional', aboutPoint1Desc: 'Comunicación clara, presentación premium y ejecución confiable.',
+        aboutPoint2: 'Estratégico', aboutPoint2Desc: 'Recomendaciones creadas para impacto a largo plazo, no confusión a corto plazo.',
+        aboutPoint3: 'Organizado', aboutPoint3Desc: 'Una experiencia estructurada que genera confianza desde el primer día.',
+        whyEyebrow: 'Por qué EPPS', whyTitle: 'Guía confiable.<br>Ejecución moderna.', whyDesc: 'EPPS combina una imagen profesional creíble con servicio directo y práctico — creando una experiencia basada en claridad, confianza y acción.',
+        whyF1: 'Experiencia de consulta limpia y enfocada', whyF2: 'Guía de impuestos, negocios y digital en un solo lugar', whyF3: 'Precio fijo — sin sorpresas ni cargos ocultos', whyF4: 'Creado para individuos, emprendedores y negocios en crecimiento',
+        footerCopy: '© 2026 Esteban Perez Professional Services. Todos los derechos reservados.',
+        modalEyebrow: 'Consulta EPPS', modalTitle: 'Reservar una cita', selectService: 'Selecciona un servicio',
+        fullName: 'Nombre completo *', fullNamePlaceholder: 'Tu nombre completo', emailAddress: 'Correo electrónico *', emailPlaceholder: 'tu@email.com', phoneNumber: 'Número de teléfono', bestTime: 'Mejor hora para contactarte', preferredTime: 'Hora preferida', morning: 'Mañana (9am – 12pm)', afternoon: 'Tarde (12pm – 5pm)', evening: 'Noche (5pm – 8pm)', helpQuestion: '¿Cómo puede ayudarte EPPS? *', messagePlaceholder: 'Describe brevemente en qué necesitas ayuda...',
+        selectedService: 'Servicio seleccionado', selectServiceAbove: '— Selecciona un servicio arriba —', confirmBooking: 'Confirmar solicitud de cita', modalFootnote: 'Consulta de 45 minutos · Sin pago por adelantado · Confirmación dentro de 24 horas'
+      }
+    };
+
+    let currentLang = localStorage.getItem('eppsLang') || 'en';
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('eppsLang', lang);
+      document.documentElement.lang = lang;
+      document.getElementById('langBtn').textContent = lang === 'en' ? 'ES' : 'EN';
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) el.textContent = translations[lang][key];
+      });
+
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (translations[lang][key]) el.innerHTML = translations[lang][key];
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang][key]) el.placeholder = translations[lang][key];
+      });
+
+      const selected = document.querySelector('.ms-pill.active');
+      if (!selected) {
+        document.getElementById('summaryService').textContent = translations[lang].selectServiceAbove;
+      }
+    }
+
+    function toggleLanguage() {
+      applyLanguage(currentLang === 'en' ? 'es' : 'en');
+    }
+
     function openModal(service) {
       document.getElementById('modalOverlay').classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -1263,15 +1443,22 @@
       el.classList.add('active');
 
       const svc = el.dataset.service;
+      const labelMap = {
+        'Tax Services': translations[currentLang].taxName,
+        'Business Consulting': translations[currentLang].businessName,
+        'Digital Solutions': translations[currentLang].digitalName
+      };
 
       document.getElementById('hiddenService').value = svc + ' — $44.99';
-      document.getElementById('summaryService').textContent = svc;
+      document.getElementById('summaryService').textContent = labelMap[svc] || svc;
       document.getElementById('summaryPrice').textContent = '$44.99';
     }
 
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeModal();
     });
+
+    applyLanguage(currentLang);
   </script>
 
 </body>
